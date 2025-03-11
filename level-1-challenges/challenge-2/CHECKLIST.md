@@ -1,0 +1,1 @@
+- The console logs the expected output
