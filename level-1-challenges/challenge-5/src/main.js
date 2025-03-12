@@ -34,7 +34,7 @@ console.log(aSquareSquareRoot);
 
 const random = Math.random();
 console.log(random);
-const randomBetween1And10 = Math.floor(Math.random() * 10);
+const randomBetween1And10 = Math.floor(Math.random() * 10 + 1);
 console.log(randomBetween1And10);
 
 const aIncrement = ++a;
@@ -42,3 +42,8 @@ console.log(aIncrement);
 
 const bDecrement = --b;
 console.log(bDecrement);
+
+a++;
+console.log(a); // 6
+b--;
+console.log(b); // 2
