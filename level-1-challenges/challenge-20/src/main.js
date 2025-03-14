@@ -23,7 +23,7 @@ const calculateSpellPower = (age) => {
   return age * 10;
 };
 
-console.log(calculateSpellPower(25));
+console.log(`Spell Power: ${calculateSpellPower(25)}`);
 
 const castFireball = (power) => `Fireball blazes with power ${power}!`,
   summonWaterSpout = (power) => `Water spout surges with power ${power}!`,
