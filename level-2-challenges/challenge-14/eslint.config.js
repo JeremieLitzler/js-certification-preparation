@@ -5,7 +5,6 @@ export default [
   {
     'rules': {
       '@stylistic/js/semi': [
-        'error',
         'never'
       ],
       '@stylistic/js/quotes': [

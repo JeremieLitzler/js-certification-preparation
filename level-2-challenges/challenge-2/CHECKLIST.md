@@ -5,3 +5,17 @@
 - The variable `isPreppingForExam` is a boolean `true`
 - The variable `isOlderThan8` is correctly assigned
 - The variable `thisVarHasNoValue` is undefined
+
+## What to Expect
+
+You should have the following logged to the console.
+
+```
+king
+false
+false
+12
+13
+true
+true
+```

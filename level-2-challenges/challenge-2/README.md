@@ -42,16 +42,3 @@ In this challenge, you'll get practice declaring variables of different data typ
   - console log `thisVarHasNoValue`
   - What is logged?
 
-## What to Expect
-
-You should have the following logged to the console.
-
-```
-king
-false
-false
-12
-13
-true
-true
-```
