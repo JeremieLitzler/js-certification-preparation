@@ -1,5 +1,5 @@
 {
-  "name": "training-challenge",
+  "name": "cert-challenge-template",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,7 +12,6 @@
   },
   "devDependencies": {
     "@stylistic/eslint-plugin-js": "^2.4.0",
-    "@testing-library/dom": "^10.4.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.8.0",
     "jsdom": "^24.1.1",

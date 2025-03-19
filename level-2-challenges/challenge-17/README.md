@@ -5,57 +5,45 @@ chapter: "Chapter 9: Challenge Roundup"
 training: true
 ---
 
-# Article Comments
+# Timer App: Dom Manipulation and Intervals
 
 # Challenge Description
 
-In this challenge, you are tasked with creating an article comments section.
+In this challenge, you are tasked with creating a timer application.
 
 The challenge will require that you work in `src/main.js`.
 
 ## Requirements
 
-- Fetch the article comments from the `/comments` API endpoint.
+- Show time:
+  - The timer must display time in the `ss` format (e.g., `05` for 5 seconds and `20` for 20 seconds).
+  - The timer's initial value should be `00`.
+  - Display the initial value in the `id=timer` element's `textContent`.
 
-- Display the list of comments as follows:
+> 💡 HINT: You can use the `padStart` function to prepend a zero to the `seconds` value if it is less than 10.
+> [Read Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)
 
-  - Create a comment item element with the following structure:
-    - `div` container element to wrap all the elements.
-    - `img` element with the `src` attribute set to the comment's `avatar` data to display the user's avatar. Append it to the container `div` element.
-    - `div` (sub-container) element to wrap the user's name and comment content.
-      - `h3` element with the comment's `name` data to display the user's name. Append it to the sub-container `div` element.
-      - `p` element with the comment's `content` data to display the user's comment. Append it to the sub-container `div` element.
-    - Append the sub-container `div` element to the parent container `div` element.
-  - Append the comment item to the comments container element with `id="commentsContainer"`.
+- When the start button (`id=start`) is clicked:
+  - Start the timer and update the `id=timer` element's `textContent` every second.
+  - Hide the start button (`id=start`).
+  - Show the pause button (`id=pause`).
 
-> 💡 HINT: The HTML structure of the comment item should look like this:
->
-> ```html
-> <div>
->   <img src="avatar" />
->   <div>
->     <h3>Name</h3>
->     <p>content</p>
->   </div>
-> </div>
-> ```
+> 💡 HINT: You can use the `setInterval` function to update the timer every second.
+> [Read Docs](https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval)
 
-- Implement the functionality to post a new comment:
-  - When the `id="submitBtn"` button is clicked, the following steps should be executed:
-    - Create a new comment object with the following structure:
-      - `name`: The value of the `id="name"` element.
-      - `comment`: The value of the `id="comment"` element.
-    - Send a fetch request to the `/comments/post` API endpoint with:
-      - The request method set to `'POST'`.
-      - The request headers set to `'Content-Type': 'application/json'`.
-      - The request body set to the new comment data as a stringified object (e.g. `{ name, comment }`).
-    - The fetch request will return the newly added comment if successful. Render the new comment in the comments container `id="commentsContainer"`.
+> 💡 HINT: You can add and remove the `hidden` class to toggle the display state of elements.
 
-> 💡 HINT: In real-world scenarios, it's essential to sanitize input values before storing them in the database to ensure data integrity and security.
-> This is not required for this challenge, but it's a good practice to keep in mind.
+- When the pause button (`id=pause`) is clicked:
+  - Pause the timer and stop updating the `id=timer` element's `textContent`.
+  - Show the start button (`id=start`).
+  - Hide the pause button (`id=pause`).
 
-![Screenshot of the solution](https://api.certificates.dev/storage/js-l2-training-9-2-demo.gif)
+> 💡 HINT: You can use the `clearInterval` function to stop the timer.
+> [Read Docs](https://developer.mozilla.org/en-US/docs/Web/API/Window/clearInterval)
 
-## Other Considerations
+- When the reset button (`id=reset`) is clicked:
+  - reset the timer and update the `id=timer` element's `textContent`.
+  - Show the start button (`id=start`).
+  - Hide the pause button (`id=pause`).
 
-- The `fetchData()` and `main()` functions must remain exported as they are essential for our tests.
+![Screenshot of the solution](https://api.certificates.dev/storage/js-l2-training-9-1-demo.gif)

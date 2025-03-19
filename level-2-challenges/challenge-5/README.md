@@ -5,78 +5,48 @@ chapter: "Chapter 3: Events"
 training: true
 ---
 
-# Interstellar Rescue: Event Bubbling Challenge
+# Galactic Explorer Game: Event Handling Challenge
 
 ## Challenge Description
 
-In this challenge, you'll embark on an interstellar rescue using JavaScript events skills. Your mission is to save stranded astronauts and navigate through cosmic anomalies.
+In this challenge, your mission is to create a simple galactic exploration game using the basics of JavaScript event handling.
 
-Complete all tasks in `/src/main.js` and prove your prowess as an Interstellar Rescuer!
+Complete all tasks in `/src/main.js` and prove your prowess as a Galactic Explorer!
 
 ## Requirements
 
-1. Prevent Hyperlink to Black Hole:
+1. Initiate the Launch Sequence:
 
-- Find the anchor tag with `id="blackHoleLink"`.
-- Bind a click event to the anchor tag.
-- When the link is clicked, prevent the page navigation and log "Black Hole avoided!".
+   - Bind a click event to the button with `id="launchButton"`.
+   - When the button is clicked, add the class `launch` to an element with the class `rocket`
+   - When the class is added you should see a rocket svg animate from top to bottom of the right hand side of the page.
 
-2. Block Unauthorized Communications:
+![screenshot of solution](https://github.com/JavaScript-Certification/images/blob/main/images/training/3-1/initiate-the-launch-sequence.gif?raw=true)
 
-- Find the form with `id="communicationForm"`.
-- Bind a submit event to the form.
-- When the form is submitted, prevent the default submission and log the message "Unauthorized communication blocked!".
+2. Monitor the Control Input:
 
+   - Find the input field with `id="controlInput"`.
+   - Bind a keydown event to the input field.
+   - When a key is pressed, log the key that was pressed.
+   - 
+![screenshot of solution](https://github.com/JavaScript-Certification/images/blob/main/images/training/3-1/monitor-the-control-input.gif?raw=true)
 
-3. Activate Rescue Beacon:
+3. Track the Mouse Coordinates:
 
-- Find the button with `id="rescueBeaconButton"`.
-- Bind a click event to the button.
-- When the button is clicked, log "Rescue beacon activated!".
-- Also, bind a click event to the document that logs "Rescue beacon deactivated!".
-- Ensure that clicking the button does not trigger the document's click event.
+   - Bind a mousemove event to the document.
+   - When the mouse is moved, set the top and left position of the element with the class `star` to the event `clientX` and `clientY` properties so that the star svg image follows the mouse around.
 
-4. Retrieve Space Supplies:
+> 💡 HINT: The `clientX` and `clientY` props are provided as numbers while the style `top` and `left` expect a value that includes the unit `px`
 
-- Bind click events to all child `span` elements within the `id="suppliesContainer"` using event delegation.
-- When a supply item (`<span>` element) is clicked, log the text content of the clicked item.
-- Ensure that clicking on the supply item does not trigger any parent element's event.
-- Bind click event to the button element with `id="addSupplyButton"` and add a new supply item to the `suppliesContainer` when clicked.
-  - The new supply item should be a `<span>` element with the text content "Supply {index}(Order index)".
-  - The new supply item should also can be clicked to log its text content.
-  - **Note**: Instead of binding click events for newly added Supply each time you click the `id="addSupplyButton` button, use the event delegation approach to better bind events for dynamically added elements.
+![screenshot of solution](https://github.com/JavaScript-Certification/images/blob/main/images/training/3-1/track-the-mouse-coordinates.gif?raw=true)
 
-## What to Expect
+4. Activate the Hyperdrive:
 
-1. Prevent Hyperlink to Black Hole:
+   - Find the button with `id="hyperdriveButton"`.
+   - Bind a double-click event to the button.
+   - When the button is double-clicked, add the `hyperdrive` class to the document body
+   - This will apply a background image to the body
 
-  Prevent page navigating
+![screenshot of solution](https://github.com/JavaScript-Certification/images/blob/main/images/training/3-1/activate-the-hyperdrive.gif?raw=true)
 
-```plaintext
-Output: Black Hole avoided!
-```
-
-2. Block Unauthorized Communications:
-
-  Prevent form submission
-
-```plaintext
-Output: Unauthorized communication blocked!
-```
-
-
-3. Activate Rescue Beacon:
-
-```plaintext
-Output: Rescue beacon activated!
-Output: Rescue beacon deactivated!  (only when clicking outside the rescue beacon button)
-```
-
-4. Retrieve Space Supplies:
-
-  Click the `addSupplyButton` button to add a new supply item.
-
-```plaintext
-Output: the text content of the clicked space supplies
-```
-
+> 💡 FYI: the animations for this challenge use CSS animations under the hood. You can see them in `public/style.css` It's not necessary to understand how those work for the exam but it's been included to give you a good idea of some practical reason why you would listen for events in JavaScript and then add classes based off of those events.

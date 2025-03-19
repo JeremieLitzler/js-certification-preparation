@@ -1,52 +1,57 @@
 ---
 difficulty: 2
-tags: Coding Challenge, Object Methods
+tags: Coding Challenge, training
 chapter: "Chapter 6: Advanced Array and Object Methods"
 training: true
 ---
 
-# Digital Pet Paradise: Advanced Object Methods Challenge
+# Pokémon Training Camp: Advanced Array Methods Challenge
 
 ## Challenge Description
 
-Welcome to Digital Pet Paradise! As a virtual pet caretaker, you need to use JavaScript's advanced object methods to care for and nurture your digital pets.
+Welcome to the Pokémon Training Camp! As a new trainer, you need to use JavaScript's advanced array methods to manage and nurture your Pokémon team.
 
-Complete all tasks in `/src/main.js` to become the best digital pet caretaker!
+Complete all tasks in `/src/main.js` to become the very best Pokémon trainer!
 
 ## Requirements
 
-1. Pet Attribute List:
+1. Pokédex Update:
 
-   - Implement the `listPetAttributes` function that accepts a pet object.
-   - Return an array of all attribute names for that pet.
+   - Implement the `updatePokedex` function that accepts an array of Pokémon objects.
+   - Add a `discoveredAt` property (current timestamp) to each Pokémon.
+   - Return the updated Pokémon array.
 
-2. Pet Health Index Calculation:
+2. Type Filtering Master:
 
-   - Implement the `calculatePetHealth` function that accepts a pet status object.
-   - Calculate the average of all health-related metrics.
-   - Return the pet's overall health index.
+   - Implement the `filterByType` function that accepts a Pokémon array and a type (e.g., "Fire", "Water", "Grass").
+   - Return an array containing only Pokémon of the specified type.
 
-3. Pet Skill Upgrade:
+3. Team Power Assessment:
 
-   - Implement the `upgradePetSkills` function that accepts two objects: current skills and new skills.
-   - Merge the new skills into the current skills without modifying the original object.
-   - Return the upgraded pet skills object.
+   - Implement the `calculateTeamPower` function that accepts a Pokémon array.
+   - Calculate the team's total battle power (sum of each Pokémon's `power` property).
+   - Return the team's total battle power.
 
-4. Rare Pet Protection:
+4. Rare Pokémon Explorer:
 
-   - Implement the `protectRarePet` function that accepts a rare pet object.
-   - Ensure that the rare pet's attributes cannot be modified.
-   - Return the protected rare pet object.
+   - Implement the `findRarePokemon` function that accepts a Pokémon array.
+   - Locate the first Pokémon with a rarity of "Legendary".
+   - Return the found Pokémon object, or `undefined` if not found.
 
-5. Pet Special Ability Check:
+5. Evolution Journey:
 
-   - Implement the `checkSpecialAbility` function that accepts a pet object and an ability name.
-   - Check if the pet directly has the specified special ability (not including inherited properties).
-   - Return a boolean indicating whether the pet has that special ability.
+   - Implement the `evolveAllPokemon` function that accepts a Pokémon array.
+   - Increase each Pokémon's level by 1 and power by 10.
+   - Modify the original array directly, no need to return anything.
 
+6. Championship Challenge:
+
+   - Implement the `readyForChampionship` function that accepts a Pokémon array.
+   - Check if all Pokémon are at level 50 or above.
+   - Return a boolean indicating whether the team is ready for the championship.
 
 ## What to Expect
 
- The pet cards displayed as expected:
+The Pokémon training camp displayed as expected:
 
-![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/6-2/pet-card.jpg)
+![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/6-1/pokemon.jpg)

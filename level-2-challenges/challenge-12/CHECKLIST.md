@@ -1,1 +1,1 @@
-- The pet cards displayed as expected
+- The Pokémon training camp displayed as expected

@@ -5,48 +5,43 @@ chapter: "Chapter 5: Asynchronous JavaScript and API's"
 training: true
 ---
 
-# Product Explorer: Data Fetching and JSON Challenge
+# Treasure Hunt: Promises and Async/Await Challenge
 
 ## Challenge Description
 
-In this challenge, you will use JavaScript's `fetch` API and JSON data to complete a product exploration task.
+In this challenge, you will embark on an exciting treasure hunt adventure using JavaScript's asynchronous features.
 
 Complete all tasks in `/src/main.js`.
 
 ## Requirements
 
-1. Fetch All Products:
+1. Treasure Finder:
 
-   - Implement a `fetchAllProducts` function that uses the `fetch` API to retrieve product data from the `https://dummyjson.com/products` endpoint.
-   - The function should return a JSON object containing product information.
-   - The returned JSON object should include `products` (list of products), `total`, `skip`, and `limit` properties.
-   - Loop over each of the products and call the provided `renderProduct` function for each of them
-  
-![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/5-2/1-fetch-all-products.gif)
+   - As a treasure hunter, you need a reliable way to find treasures asynchronously.
+   - Implement a function `findTreasure` that returns a treasure object after a delay.
+   - The function should accept `treasureName` and `delay` in milliseconds.
+   - The returned treasure object should have properties `name` and `foundAt` (timestamp when the treasure was found).
+   - This function will be invoked in the requirements below.
 
-2. Fetch Single Product Details:
+> 💡 HINT - the [setTimeout function](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout) and [promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) will be very useful for this challenge
 
-   - Implement a `fetchProductDetails` function that uses the `fetch` API to retrieve details of a single product from the `https://dummyjson.com/products/:id` endpoint.
-   - The function should accept an `id` parameter and return a JSON object containing the product's detailed information.
-   - The returned JSON object should include all properties of the product, such as `id`, `title`, `description`, `price`, etc.
-   - Render this product to the page with the provided `renderProduct` function
+2. Sequential Treasure Hunt:
 
-> 💡 HINT: the `renderProduct` function appends items to the page so this one will be added to the current list of products
+   - You need to find multiple treasures in a specific order.
+   - Implement a function `sequentialHunt` that accepts an array of treasure names and delays.
+   - Find each treasure in sequence using the `findTreasure` function. 
+   - For each treasure found, immediately call the provided `renderTreasure` method to display it.
+   - Return an array of all found treasures after all treasures have been found and rendered.
 
-![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/5-2/2-single-product.jpg)
+![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/5-1/sequential-treasure.gif)
 
-3. Error Handling:
+3. Parallel Treasure Hunt:
 
-   - Implement basic error handling in the `fetchProductDetails` function.
-   - If there's an error with the response (like a 404), return an object from the function that looks like this:
-   
-   ```javascript
-   { error: { message: res.statusText, status: res.status } }
-   ```
+   - Sometimes, to save time, treasures can be found in parallel.
+   - Implement a function `parallelHunt` that accepts an array of treasure names and delays.
+   - Asynchronously find all treasures in parallel, logging the name when each treasure is found.
+   - Receive the array of treasures returned by the `parallelHunt` function, and call the provided `renderTreasure` method for each treasure to display it.
 
-   > 💡 HINT: The `res.ok` property will be false if the request returns a status code not in the 200 range
+> 💡 HINT - [Promise.all()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) is useful for know when multiple promises ALL resolve
 
-   - Test it out by calling a `fetchProductDetails` on an id that doesn't exist (you can use `9999`)
-   - Render the result with the `renderProduct` function
-
-![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/5-2/3-error.jpg)
+![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/5-1/parallel-treasure.gif)

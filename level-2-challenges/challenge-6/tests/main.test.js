@@ -6,125 +6,85 @@ beforeAll(async () => {
 })
 
 
-test('1. Avoid the Enchanted Spider', async () => {
-  const spiderWeb = document.querySelector('#spiderWeb')
-  const event = new MouseEvent('mouseenter', { 'bubbles': true })
-  const event2 = new MouseEvent('mouseover', { 'bubbles': true })
-  spiderWeb.dispatchEvent(event)
-  spiderWeb.dispatchEvent(event2)
-  expect(spiderWeb.classList.contains('spider-web')).toBeTruthy()
-})
-
-
-test('1. Avoid the Enchanted Spider', async () => {
-  const spiderWeb = document.querySelector('#spiderWeb')
-  const event = new MouseEvent('mouseleave', { 'bubbles': true })
-  const event2 = new MouseEvent('mouseout', { 'bubbles': true })
-  spiderWeb.dispatchEvent(event)
-  spiderWeb.dispatchEvent(event2)
-  expect(spiderWeb.classList.contains('spider-web')).toBeFalsy()
-})
-
-test('2. Activate Magic Portal', async () => {
-  const spy = vi.spyOn(console, 'log')
-  const magicPortalForm = document.querySelector('#magicPortalForm')
-  const event = new KeyboardEvent('keydown', { 'key': 'Enter',
-    'bubbles': true })
-  magicPortalForm.dispatchEvent(event)
-  expect(spy).toHaveBeenCalledWith('Magic Portal activated!')
-  spy.mockRestore()
-})
-
-test('3. Track Fairy Movements', async () => {
-  const fairy = document.querySelector('.fairy')
-  const event = new MouseEvent('mousemove', {
-    'clientX': 100,
-    'clientY': 200
+test('1. Prevent Hyperlink to Black Hole', async () => {
+  const consoleMock = vi.spyOn(console, 'log')
+  const blackHoleLink = document.querySelector('#blackHoleLink')
+  const event = new MouseEvent('click', {
+    'bubbles': true,
+    'cancelable': true
   })
-  document.dispatchEvent(event)
-  expect(fairy.style.left).not.toBe('100px')
-  expect(fairy.style.top).not.toBe('200px')
+
+  blackHoleLink.dispatchEvent(event)
+  expect(event.defaultPrevented).toBe(true)
+  expect(consoleMock).toHaveBeenCalledWith('Black Hole avoided!')
+  consoleMock.mockRestore()
 })
 
-test('3. Track Fairy Movements', async () => {
-  const fairy = document.querySelector('.fairy')
-  const event = new MouseEvent('mousemove', {
-    'clientX': 200,
-    'clientY': 400,
-    'ctrlKey': true
+test('2. Block Unauthorized Communications', async () => {
+  const communicationForm = document.querySelector('#communicationForm')
+  const event = new Event('submit', {
+    'bubbles': true,
+    'cancelable': true
   })
-  document.dispatchEvent(event)
-  expect(fairy.style.left).toBe('200px')
-  expect(fairy.style.top).toBe('400px')
+
+  const consoleMock = vi.spyOn(console, 'log')
+
+  communicationForm.dispatchEvent(event)
+  expect(event.defaultPrevented).toBe(true)
+  expect(consoleMock).toHaveBeenCalledWith('Unauthorized communication blocked!')
+
+  consoleMock.mockRestore()
 })
 
-test('4. Summon Fireflies', async () => {
-  const fireflyButton = document.querySelector('#fireflyButton')
-  const event = new MouseEvent('mousedown', { 'bubbles': true })
-  fireflyButton.dispatchEvent(event)
-  expect(fireflyButton.classList.contains('firefly')).toBeTruthy()
+
+test('3. Activate Rescue Beacon', async () => {
+  const rescueBeaconButton = document.querySelector('#rescueBeaconButton')
+  const buttonEvent = new MouseEvent('click', {
+    'bubbles': true,
+    'cancelable': true
+  })
+  const documentEvent = new MouseEvent('click', {
+    'bubbles': true,
+    'cancelable': true
+  })
+
+  const consoleMock = vi.spyOn(console, 'log')
+
+  rescueBeaconButton.dispatchEvent(buttonEvent)
+  expect(consoleMock).toBeCalledTimes(1)
+  expect(consoleMock).toHaveBeenCalledWith('Rescue beacon activated!')
+
+  document.dispatchEvent(documentEvent)
+  expect(consoleMock).toHaveBeenCalledWith('Rescue beacon deactivated!')
+
+  consoleMock.mockRestore()
 })
 
-test('4. Summon Fireflies', async () => {
-  const fireflyButton = document.querySelector('#fireflyButton')
-  const event = new MouseEvent('mouseup', { 'bubbles': true })
-  fireflyButton.dispatchEvent(event)
-  expect(fireflyButton.classList.contains('firefly')).toBeFalsy()
+test('4. Retrieve Space Supplies', async () => {
+  const suppliesContainer = document.querySelector('#suppliesContainer')
+  expect(suppliesContainer.children.length).toBe(3)
+  const addSupplyButton = document.querySelector('#addSupplyButton')
+  addSupplyButton.click()
+  console.log(suppliesContainer.children.length)
+  expect(suppliesContainer.children.length).toBe(4)
+  expect(suppliesContainer.children.item(3).textContent).toBe('Supply 4')
 })
 
-test('5. Scroll through Ancient Scrolls', async () => {
-  const scrollContainer = document.querySelector('#scrollContainer')
-  const tiger = document.querySelector('.tiger')
-  scrollContainer.scrollTop = 50
-  const event = new Event('scroll', { 'bubbles': true })
-  scrollContainer.dispatchEvent(event)
-  expect(tiger.style.top).toBe('50px')
-})
+test('4. Retrieve Space Supplies', async () => {
+  const suppliesContainer = document.querySelector('#suppliesContainer')
+  const span = document.createElement('span')
+  span.textContent = 'Supply Test'
+  suppliesContainer.appendChild(span)
 
-test('6. Navigate through the Maze', async () => {
-  const explorer = document.querySelector('.explorer')
-  const directions = {
-    'ArrowDown':
-    { 'top': 10,
-      'left': 0 },
-    'ArrowRight':
-    { 'top': 10,
-      'left': 10 },
-    'ArrowLeft':
-    { 'top': 10,
-      'left': 0 },
-    'ArrowUp':
-     { 'top': 0,
-       'left': 0 }
-  }
-  const spy = vi.spyOn(console, 'log')
-  for (const [
-    key,
-    value
-  ] of Object.entries(directions)) {
-    const event = new KeyboardEvent('keydown', { key,
-      'bubbles': true })
-    document.dispatchEvent(event)
-    expect(explorer.style.top).toBe(`${value.top}px`)
-    expect(explorer.style.left).toBe(`${value.left}px`)
-  }
-  spy.mockRestore()
-})
+  const event = new MouseEvent('click', {
+    'bubbles': true,
+    'cancelable': true
+  })
 
-test('7. Detect Magical Creatures', async () => {
-  const creatureDetector = document.querySelector('#creatureDetector')
-  const spy = vi.spyOn(console, 'log')
-  const event = new MouseEvent('mouseover', { 'bubbles': true })
-  creatureDetector.dispatchEvent(event)
-  expect(spy).toHaveBeenCalledWith('Magical creature detected!')
-  spy.mockRestore()
-})
+  const consoleMock = vi.spyOn(console, 'log')
 
-test('7. Detect Magical Creatures', async () => {
-  const creatureDetector = document.querySelector('#creatureDetector')
-  const spy = vi.spyOn(console, 'log')
-  const event = new MouseEvent('mouseout', { 'bubbles': true })
-  creatureDetector.dispatchEvent(event)
-  expect(spy).toHaveBeenCalledWith('Magical creature left!')
-  spy.mockRestore()
+  span.dispatchEvent(event)
+  expect(consoleMock).toHaveBeenCalledWith('Supply Test')
+
+  consoleMock.mockRestore()
 })

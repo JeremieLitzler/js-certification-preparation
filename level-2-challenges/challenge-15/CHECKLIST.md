@@ -1,1 +1,1 @@
-- The harmony hub displayed as expected
+- The console displays the expected output

@@ -1,49 +1,44 @@
-export const pikachu = {
-  'name': 'Pikachu',
-  'type': 'Electric',
-  'level': 5,
-  'happiness': 80,
-  'status': {
-    'energy': 70,
-    'hunger': 30,
-    'mood': 90,
-    'hygiene': 80
+export const pokemonData = [
+  {
+    'name': 'Pikachu',
+    'type': 'Electric',
+    'level': 25,
+    'power': 55,
+    'rarity': 'Common'
   },
-  'skills': {
-    'tackle': 10,
-    'quickAttack': 15,
-    'thunderShock': 20
+  {
+    'name': 'Charizard',
+    'type': 'Fire',
+    'level': 36,
+    'power': 84,
+    'rarity': 'Rare'
   },
-  'abilities': {
-    'static': true,
-    'lightningRod': false
+  {
+    'name': 'Blastoise',
+    'type': 'Water',
+    'level': 31,
+    'power': 79,
+    'rarity': 'Rare'
+  },
+  {
+    'name': 'Mewtwo',
+    'type': 'Psychic',
+    'level': 70,
+    'power': 150,
+    'rarity': 'Legendary'
+  },
+  {
+    'name': 'Bulbasaur',
+    'type': 'Grass',
+    'level': 15,
+    'power': 45,
+    'rarity': 'Common'
+  },
+  {
+    'name': 'Articuno',
+    'type': 'Ice',
+    'level': 50,
+    'power': 110,
+    'rarity': 'Legendary'
   }
-}
-
-export const charmander = {
-  'name': 'Charmander',
-  'type': 'Fire',
-  'level': 5,
-  'happiness': 75,
-  'status': {
-    'energy': 65,
-    'hunger': 40,
-    'mood': 85,
-    'hygiene': 70
-  },
-  'skills': {
-    'scratch': 10,
-    'ember': 15,
-    'smokescreen': 5
-  },
-  'abilities': {
-    'blaze': true,
-    'solarPower': false
-  }
-}
-
-export const newSkills = {
-  'thunderbolt': 40,
-  'ironTail': 30
-}
-
+]

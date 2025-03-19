@@ -1,44 +1,132 @@
 ---
 difficulty: 2
-tags: Code Challenge, training
+tags: codechallenge, training
 chapter: "Chapter 4: Advanced Functions"
 training: true
 ---
 
-# Interstellar Navigator: Advanced Function Challenge
+# Detective Agency: First Class Functions Challenge
 
 ## Challenge Description
 
-In this challenge, Your mission is to become an Interstellar Navigator by using JavaScript functions.
+In this challenge, Your mission is to solve a series of complex cases using JavaScript functions.
 
-Complete all tasks in `/src/main.js`.
+Complete all tasks in `/src/main.js` and prove your prowess as a Legendary Detective!
 
 ## Requirements
 
-1. Star Counter:
+1. Analyze Evidence:
 
-  - As you navigate through the stars, you need a reliable way to count them.
-  - Implement a function `createStarCounter` that returns an object. This object should have a private `value` variable initialized with the provided `initialValue` and three methods: `increment`, `decrement`, and `getValue`.
-  - The `increment` method should increase the `value` by 1.
-  - The `decrement` method should decrease the `value` by 1.
-  - The `getValue` method should return the current `value`.
+   - Implement a function `analyzeEvidence` that behaves like `Array.prototype.reduce`.
 
-![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/4-2/star-counter.png)
+> 💡 HINT: You can [read about how reduce works in the MDN docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce).
 
-2. Cosmic Signal Broadcaster:
+   - This function will help you analyze the pieces of evidence collected from the crime scenes.
+   - Example usage:
+  
+     ```javascript
+     const evidence = [2, 4, 6, 8];
+     const totalEvidence = analyzeEvidence(evidence, (acc, val) => acc + val, 0);
+     console.log(totalEvidence); // Output: 20
+     ```
+> 🗒️ NOTE: Please don't use `Array.prototype.reduce` function to implement the function.
 
-  - As an Interstellar Navigator, you have a function `broadcastSignals` that is supposed to broadcast a series of cosmic signals. Each signal should be sent after a specific time interval and must add a corresponding class to a container in the DOM.
-  - The current implementation of `broadcastSignals` has a bug. Instead of adding the correct class for each signal, it adds the same class for each signal. This is causing confusion in the signal broadcast system.
-  - Identify and fix the bug in the `broadcastSignals` function. Ensure that each signal is sent after 100 milliseconds and adds the correct class (`signal-1`, `signal-2`, etc.) to the container with id `signalBroadcaster`. The previous signal class should be removed when the next signal is added.
+2. Enhance Investigation Skills:
 
-![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/4-2/signal-broadcaster.gif)
+   - Implement a higher-order function `createSkillEnhancer` that takes a number `n` and returns a function that multiplies the detective's skill level by `n`.
+   - This function will help you enhance your investigation skills.
+   - Example usage:
+  
+     ```javascript
+     const doubleSkill = createSkillEnhancer(2);
+     console.log(doubleSkill(5)); // Output: 10
+     ```
 
-3. Function Chain: Cosmic Adjuster:
+3. Track Suspect Movements:
 
-   - To maintain the balance of the cosmos, you need to adjust the number of rockets, planets, and airships.
-   - Implement a function `createCosmicAdjuster` that returns an object with chainable methods `addRockets`, `addPlanets`, and `addAirships`. Each method should add the specified number of elements to the respective container in the DOM.
-   - The `addRockets` method should add `span` elements to the container with id `rockets`.
-   - The `addPlanets` method should add `span` elements to the container with id `planets`.
-   - The `addAirships` method should add `span` elements to the container with id `airships`.
+   - Implement a function `trackMovements` that takes an array of locations and a callback function.
+   - Simulate tracking by iterating over the locations with 200ms delay using `setTimeout` and call the callback with each location.
+   - Example usage:
+  
+     ```javascript
+     const locations = ['Park', 'Mall', 'Cafe'];
+     trackMovements(locations, (location) => {
+      // Output: Suspect spotted at: Park, 
+      // Suspect spotted at: Mall, Suspect spotted at: Cafe 
+      // at 200ms intervals
+       console.log(`Suspect spotted at: ${location}`); 
+     });
+     ```
 
-![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/4-2/cosmic-adjuster.png)
+> 💡 HINT: You can [read up on setTimeout in the MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout).
+
+4. Combine Investigation Techniques:
+
+   - Implement a function `composeTechniques` that takes multiple functions as arguments and returns a new function that is the composition of those functions.
+   - The functions should be applied from right to left to form a complete investigation technique.
+   - Example usage:
+
+     ```javascript
+     const addForensics = x => x + ' with Forensic Analysis';
+     const addInterrogation = x => x + ' with Interrogation';
+     const combinedTechnique = composeTechniques(addInterrogation, addForensics);
+     // Output: Investigation with Forensic Analysis with Interrogation
+     console.log(combinedTechnique('Investigation')); 
+     ```
+
+5. Filter Suspect List:
+
+   - Implement a function `filterSuspects` that takes an array of suspects and a predicate function.
+   - The function should return an array of suspects that satisfy the predicate.
+   - Example usage:
+     ```javascript
+     const suspects = [
+       { name: 'Alice', age: 30, location: 'Park' },
+       { name: 'Bob', age: 25, location: 'Mall' },
+       { name: 'Charlie', age: 35, location: 'Cafe' }
+     ];
+     const isAtPark = suspect => suspect.location === 'Park';
+     const suspectsAtPark = filterSuspects(suspects, isAtPark);
+     // Output: [{ name: 'Alice', age: 30, location: 'Park' }]
+     console.log(suspectsAtPark); 
+     ```
+> 🗒️ NOTE: Please don't use `Array.prototype.filter` function to implement the function.
+
+## What to Expect
+
+Your output should look similar to this:
+
+1. Analyze Evidence:
+
+```plaintext
+Output: 20
+```
+
+2. Enhance Investigation Skills:
+
+```plaintext
+Output: 10
+```
+
+3. Track Suspect Movements:
+
+(These will not all appear in order because of the delay caused by setTimeout)
+
+```plaintext
+Output: Suspect spotted at: Park
+Output: Suspect spotted at: Mall
+Output: Suspect spotted at: Cafe
+```
+
+1. Combine Investigation Techniques:
+
+```plaintext
+Output: Investigation with Forensic Analysis with Interrogation
+```
+
+5. Filter Suspect List:
+
+```plaintext
+Output: [{ name: 'Alice', age: 30, location: 'Park' }]
+```
+

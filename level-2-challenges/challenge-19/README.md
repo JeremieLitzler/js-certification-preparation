@@ -5,49 +5,42 @@ chapter: "Chapter 9: Challenge Roundup"
 training: true
 ---
 
-# Events and Advanced Functions Challenge
+# Ground Control to Major Tom
 
 ## Challenge Description
 
-You are tasked with implementing two requirements that involve event handling, DOM manipulation, and advanced functions.
+You’re part of the mission control team, and it’s your job to manage spacecraft systems and communicate with Major Tom during his journey. Implement the required functionality to ensure the mission is a success.
 
 ## Requirements
 
-- Requirement 1: Event Handling and Dom Manipulation
+- Connect to Major Tom:
 
-  - When the mouse is over the element with the id `button`, add the class `.hovered` to the element.
-  - When the mouse is out of the element with the id `button`, remove the class `.hovered` from the element.
-  - When the user types in the input with the id `nameInput`, update the text of the element with the id `nameDisplay` to the value of the input in realtime.
-  - When the user clicks the button with the id `button`, use `alert` to show the message `Hello, <name>!` where `<name>` is the value of the input with the id `nameInput`.
+  - When the button with `id="connect"` is clicked:
+    - Trigger a fetch request to connect to Major Tom using the API URL from the `getApiUrl()` function.
+    - Use the predefined `logMessage` function and pass the string `'connectStart'`.
+    - If the fetch response status is `500`, call the `logMessage` function with `'connectFail'`.
+    - If the fetch response status is `200`, call the `logMessage` function with `'connectSuccess'`.
 
-Once you have completed "Requirement 1", you should be able to see the following behavior:
+- Initiate Launch Sequence:
 
-![Requirement 1 Demo](https://api.certificates.dev/storage/js-l2-training-9-4-0.gif)
+  - When the button with `id="launch"` is clicked:
+    - If no prior successful connection established:
+      - Call the `logMessage` function with `'notConnected'`.
+    - If connected:
+      - Call the `logMessage` function with `'launchStart'`.
+      - Perform a countdown (from 3 to 1) every second:
+        - Call the `logMessage` function every second during the countdown, passing `'launchCountdown'` as the first argument and the current countdown number as the second.
+        - After the countdown, call the `logMessage` function with `'launchSuccess'`.
 
-- Requirement 2: Advanced Functions
-  - Complete the `createDiscount(precentage)` function:
-    - This is a higher-order function that takes a discount percentage and returns a function.
-    - The returned function takes a single cart item as a parameter and returns a new cart item with the `price` property updated to reflect the discounted price.
-    > 💡 HINT: Apply the discount using the formula: `price * (1 - percentage / 100)`
+> 💡 HINT: You can use the `setInterval` function to update the timer every second.
+> [Read Docs](https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval)
 
-  - Complete the `discountFunction` function:
-    - Set the `discountFunction` value to the `createDiscount` function you created to generate a closure function that applies the discount percentage defined by `discountPercentage` variable.
-  - Complete the `discountedCart` constant:
-    - Use the `discountedCart` constant and set its value to Immediately Invoked Function Expression (IIFE).
-    - In the IIFE, call the pre-defined `applyDiscount` function, passing the cart array and the `discountFunction`.
-  - Complete the `displayCart(cart, callback)` function:
-    - It takes the a cart array as the first parameter and a callback function as the second parameter.
-    - It calls the callback function with the cart array.
-  - Finally, trigger the `displayCart` function with the following arguments:
-    - For the first argument, pass the `discountedCart` array.
-    - For the second argument, pass a callback that:
-      - Store the the DOM element with the `id=cart` in a variable.
-      - Invokes `updateDom`, passing the cart and the variable with the DOM element.
+- Abort Mission:
 
-Once you have completed "Requirement 2", you should be able to see the following behavior:
+  - When the button with `id="abort"` is clicked:
+    - If clicked during an active launch countdown:
+      - Stop the countdown.
+      - Call the `logMessage` function with `'abortSuccess'`.
+    - If no countdown is active, call the `logMessage` function with `'abortFail'`.
 
-![Requirement 2 Demo](https://api.certificates.dev/storage/js-l2-training-9-4-1.png)
-
-## Other Considerations
-
-- Don't remove the `export` keyword from functions. It is required for the automated tests to run.
+![Screenshot](https://api.certificates.dev/storage/js-l2-training-9-3.gif)

@@ -1,3 +1,3 @@
-- fetchAllProducts use the fetch function to get the data from the API for all products
-- fetchProductDetails uses the fetch function to get the data from the API for a single product
-- fetchProductDetails handles responses with non-200 range error codes by returning an object with an error property
+- Asynchronous treasure finding implemented
+- Sequential hunt with individual rendering
+- Parallel hunt with bulk rendering

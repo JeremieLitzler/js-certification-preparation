@@ -1,52 +1,40 @@
 import { expect, describe, it } from 'vitest'
-import { pokemonData } from '../public/data'
+import { fetchProductDetails, fetchAllProducts } from '../src/main'
 
-import {
-  updatePokedex,
-  filterByType,
-  calculateTeamPower,
-  findRarePokemon,
-  evolveAllPokemon,
-  readyForChampionship
-} from '../src/main'
 
-const _data = structuredClone(pokemonData)
-describe('Pokemon functions tests', () => {
-  it('updatePokedex should add discoveredAt property', () => {
-    const result = updatePokedex(_data)
-    expect(result[0]).toHaveProperty('discoveredAt')
-    expect(typeof result[0].discoveredAt).toBe('number')
-  })
-
-  it('filterByType should correctly filter Pokemon by type', () => {
-    const result = filterByType(_data, 'Ice')
-    expect(result).toHaveLength(1)
-    expect(result[0].name).toBe('Articuno')
-  })
-
-  it('calculateTeamPower should correctly calculate total team power', () => {
-    const result = calculateTeamPower(_data)
-    expect(result).toBe(523)
-  })
-
-  it('findRarePokemon should find the legendary Pokemon', () => {
-    const result = findRarePokemon(_data)
-    expect(result.name).toBe('Mewtwo')
-  })
-
-  it('evolveAllPokemon should increase level and power of all Pokemon', () => {
-    const copyArray = JSON.parse(JSON.stringify(_data))
-    evolveAllPokemon(copyArray)
-    copyArray.forEach((item, index) => {
-      expect(item.level).toBe(_data[index].level + 1)
-      expect(item.power).toBe(_data[index].power + 10)
+describe('Product API Functions', () => {
+  describe('fetchAllProducts', () => {
+    it('should fetch all products successfully', async () => {
+      return await new Promise((resolve) => {
+        Promise.all([
+          fetchAllProducts(),
+          fetch('https://dummyjson.com/products').then((res) => res.json())
+        ]).
+          then(([
+            r1,
+            r2
+          ]) => {
+            expect(r1).toStrictEqual(r2)
+            resolve()
+          })
+      })
     })
   })
+  describe('fetchProductDetails', () => {
+    it('should work w/ 200', async () => {
+      const productId = 1
+      const result = await fetchProductDetails(productId)
+      const expectedResult = await fetch(`https://dummyjson.com/products/${productId}`).then((res) => res.json())
 
-  it('readyForChampionship should correctly determine if team is ready', () => {
-    expect(readyForChampionship(_data)).toBe(false)
-    const highLevelTeam = _data.map((p) => ({ ...p,
-      'level': 50 }))
-    expect(readyForChampionship(highLevelTeam)).toBe(true)
+      expect(result).toStrictEqual(expectedResult)
+    })
+
+    it('should work w/ 404', async () => {
+      const nonExistentProductId = 9999
+      const result = await fetchProductDetails(nonExistentProductId)
+
+      expect(result).toHaveProperty('error')
+      expect(result.error.status).toBe(404)
+    })
   })
 })

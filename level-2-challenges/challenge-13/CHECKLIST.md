@@ -1,1 +1,1 @@
-- The harmony hub displayed as expected
+- The pet cards displayed as expected

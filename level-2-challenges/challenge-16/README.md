@@ -1,49 +1,57 @@
 ---
 difficulty: 2
-tags: codechallenge, training, JavaScript
-chapter: "Chapter 9: Challenge Roundup"
+tags: JavaScript, Error Handling
+chapter: "Chapter 8: Error Handling"
 training: true
 ---
 
-# Timer App: Dom Manipulation and Intervals
+# Kitchen Safety Guardian: Custom Errors Challenge
 
-# Challenge Description
+## Challenge Description
 
-In this challenge, you are tasked with creating a timer application.
+Welcome to "Precision Kitchen"! As a perfectionist chef, your task is to ensure that every critical aspect of the kitchen operates flawlessly. You need to identify different types of potential issues in key functions and actively throw appropriate types of errors. Demonstrate your programming skills and professional expertise through meticulous error handling!
 
-The challenge will require that you work in `src/main.js`.
+Complete all tasks in `/src/main.js` to become the most competent kitchen safety guardian!
 
 ## Requirements
 
-- Show time:
-  - The timer must display time in the `ss` format (e.g., `05` for 5 seconds and `20` for 20 seconds).
-  - The timer's initial value should be `00`.
-  - Display the initial value in the `id=timer` element's `textContent`.
+1. Temperature Controller:
 
-> 💡 HINT: You can use the `padStart` function to prepend a zero to the `seconds` value if it is less than 10.
-> [Read Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)
+   - Refine the `setOvenTemperature` function.
+   - This function accepts a temperature parameter (in Celsius).
+   - If the temperature is not a number type, throw a TypeError with the message "Temperature must be a number".
+   - If the temperature is below 0 degrees or above 280 degrees, throw a RangeError with the message "Temperature out of valid range".
+   - In normal cases, return the message "Temperature set successfully".
+   - The `setOvenTemperature` function should work as expected with the following:
 
-- When the start button (`id=start`) is clicked:
-  - Start the timer and update the `id=timer` element's `textContent` every second.
-  - Hide the start button (`id=start`).
-  - Show the pause button (`id=pause`).
+   ![screenshot of requirement 1 solution](https://s3.amazonaws.com/images.certificates.dev/1-temperature-controller.png)
 
-> 💡 HINT: You can use the `setInterval` function to update the timer every second.
-> [Read Docs](https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval)
 
-> 💡 HINT: You can add and remove the `hidden` class to toggle the display state of elements.
+2. Ingredient Inspector:
 
-- When the pause button (`id=pause`) is clicked:
-  - Pause the timer and stop updating the `id=timer` element's `textContent`.
-  - Show the start button (`id=start`).
-  - Hide the pause button (`id=pause`).
+   - Refine the `checkIngredientFreshness` function.
+   - This function accepts two parameters: ingredient name and shelf life (in days).
+   - If the ingredient name is not a string, throw a TypeError with the message "Ingredient name must be a string".
+   - If the shelf life is not an integer, throw a TypeError with the message "Shelf life must be an integer".
+   - If the ingredient name is an empty string, return a custom `EmptyIngredientError` with the name "EmptyIngredientError" and message "Ingredient name cannot be empty".
 
-> 💡 HINT: You can use the `clearInterval` function to stop the timer.
-> [Read Docs](https://developer.mozilla.org/en-US/docs/Web/API/Window/clearInterval)
+      - 💡: You can create a custom error by extending `Error`
+      - 💡: Export `EmptyIngredientError` so that we can test it
 
-- When the reset button (`id=reset`) is clicked:
-  - reset the timer and update the `id=timer` element's `textContent`.
-  - Show the start button (`id=start`).
-  - Hide the pause button (`id=pause`).
+   - In normal cases, return the message "[Ingredient name] is fresh and usable".
+   - The `checkIngredientFreshness` function should work as expected with the following:
 
-![Screenshot of the solution](https://api.certificates.dev/storage/js-l2-training-9-1-demo.gif)
+   ![screenshot of requirement 2 solution](https://s3.amazonaws.com/images.certificates.dev/2-ingredient-inspector.png)
+
+3. Menu Planner:
+
+   - Refine the `addDishToMenu` function.
+   - This function accepts two parameters: dish name and price.
+   - If the dish name is not a string or is an empty string, throw a TypeError with the message "Invalid dish name".
+   - If the price is not a number or is negative, throw a TypeError with the message "Invalid price".
+   - If the dish name already exists in the menu, throw an Error with the message "Dish already exists in the menu".
+   - In normal cases, return the message "[Dish name] has been added to the menu".
+   - The `addDishToMenu` function should work as expected with the following:
+
+   ![screenshot of requirement 3 solution](https://s3.amazonaws.com/images.certificates.dev/3-menu-planner.png)
+

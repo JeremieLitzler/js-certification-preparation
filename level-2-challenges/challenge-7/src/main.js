@@ -1,67 +1,23 @@
 // complete the challenge here 👇
 
 
-// 1. Analyze Evidence
-
-export function analyzeEvidence () {}
-
-const evidence = [
-  2,
-  4,
-  6,
-  8
-]
-const totalEvidence = analyzeEvidence(evidence, (acc, val) => acc + val, 0)
-console.log(totalEvidence)
+// 1. Avoid the Enchanted Spider
 
 
-// 2. Enhance Investigation Skills
-
-export function createSkillEnhancer () {}
-
-const doubleSkill = createSkillEnhancer(2)
-console.log(doubleSkill(5))
+// 2. Activate Magic Portal
 
 
-// 3. Track Suspect Movements
-
-export function trackMovements () {}
-
-const locations = [
-  'Park',
-  'Mall',
-  'Cafe'
-]
-trackMovements(locations, (location) => {
-  console.log(`Suspect spotted at: ${location}`)
-})
+// 3. Track Fairy Movements
 
 
-// 4. Combine Investigation Techniques
-
-export function composeTechniques () {}
-
-const addForensics = (x) => x + ' with Forensic Analysis'
-const addInterrogation = (x) => x + ' with Interrogation'
-const combinedTechnique = composeTechniques(addInterrogation, addForensics)
-console.log(combinedTechnique('Investigation'))
+// 4. Summon Fireflies
 
 
-// 5. Filter Suspect List
+// 5. Scroll through Ancient Scrolls
 
-export function filterSuspects () {}
 
-const suspects = [
-  { 'name': 'Alice',
-    'age': 30,
-    'location': 'Park' },
-  { 'name': 'Bob',
-    'age': 25,
-    'location': 'Mall' },
-  { 'name': 'Charlie',
-    'age': 35,
-    'location': 'Cafe' }
-]
-const isAtPark = (suspect) => suspect.location === 'Park'
-const suspectsAtPark = filterSuspects(suspects, isAtPark)
-console.log(suspectsAtPark)
+// 6. Navigate through the Maze
+
+
+// 7. Detect Magical Creatures
+

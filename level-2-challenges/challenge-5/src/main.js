@@ -1,13 +1,13 @@
 // complete the challenge here 👇
 
 
-// 1. Prevent Hyperlink to Black Hole
+// 1. Initiate the Launch Sequence
 
 
-// 2. Block Unauthorized Communications
+// 2. Monitor the Control Input
 
 
-// 3. Activate Rescue Beacon
+// 3. Track the Mouse Coordinates
 
 
-// 4. Retrieve Space Supplies
+// 4. Activate the Hyperdrive

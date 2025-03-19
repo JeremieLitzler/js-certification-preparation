@@ -1,107 +1,68 @@
-import { expect, describe, vi, it, beforeEach, afterEach } from 'vitest'
-import * as mainModule from '../src/main'
+import { expect, describe, it } from 'vitest'
+import {
+  createStarCounter
+} from '../src/main.js'
 
-describe('findTreasure', () => {
-  it('should return a treasure object after specified delay', async () => {
-    vi.useFakeTimers()
-    const treasureName = 'Gold Coin'
-    const delay = 500
-    const promise = mainModule.findTreasure(treasureName, delay)
-    vi.advanceTimersByTime(delay)
-    const result = await promise
-    expect(result).toEqual({
-      'name': treasureName,
-      'foundAt': expect.any(Number)
-    })
-    vi.useRealTimers()
-  })
-})
-vi.mock('../src/main', async () => ({
-  ...await vi.importActual('../src/main'),
-  'findTreasure': vi.fn((name, delay) => Promise.resolve({ name,
-    'foundAt': Date.now() })),
-  'sequentialHunt': vi.fn(async (treasures) => {
-    const foundTreasures = []
-    for (const treasure of treasures) {
-      const foundTreasure = await mainModule.findTreasure(treasure.name, treasure.delay)
-      mainModule.renderTreasure(foundTreasure.name)
-      foundTreasures.push(foundTreasure)
-    }
-    return foundTreasures
-  }),
-  'renderTreasure': vi.fn(),
-  'parallelHunt': vi.fn(async (treasures) => {
-    const promises = treasures.map((treasure) => mainModule.findTreasure(treasure.name, treasure.delay))
-    const results = await Promise.all(promises)
-    return results
-  })
-}))
+function sleep (seconds) {
+  return new Promise((resolve) => setTimeout(resolve, seconds))
+}
 
-
-describe('sequentialHunt', () => {
-  beforeEach(() => {
-    vi.clearAllMocks()
-    vi.useFakeTimers()
+describe('1. Star Counter', () => {
+  it('should initialize with the given initial value', () => {
+    const starCounter = createStarCounter(3)
+    expect(starCounter.getValue()).toBe(3)
   })
 
-  afterEach(() => {
-    vi.useRealTimers()
+  it('should increment the value', () => {
+    const starCounter = createStarCounter(3)
+    starCounter.increment()
+    expect(starCounter.getValue()).toBe(4)
   })
-  it('should find treasures sequentially and render them', async () => {
-    const treasures = [
-      { 'name': 'Gold Coin!',
-        'delay': 200 },
-      { 'name': 'Silver Coin!',
-        'delay': 400 }
-    ]
-    const promise = mainModule.sequentialHunt(treasures)
-    vi.advanceTimersByTimeAsync(210)
-    expect(mainModule.findTreasure).toHaveBeenCalledTimes(1)
-    expect(mainModule.findTreasure).toHaveBeenNthCalledWith(1, 'Gold Coin!', 200)
-    const result = await promise
-    expect(result).toHaveLength(2)
-    expect(result[0].name).toBe('Gold Coin!')
-    expect(result[1].name).toBe('Silver Coin!')
-    expect(mainModule.findTreasure).toHaveBeenCalledTimes(2)
-    expect(mainModule.findTreasure).toHaveBeenNthCalledWith(2, 'Silver Coin!', 400)
+
+  it('should decrement the value', () => {
+    const starCounter = createStarCounter(3)
+    starCounter.decrement()
+    expect(starCounter.getValue()).toBe(2)
+  })
+
+  it('should not decrement below 0', () => {
+    const starCounter = createStarCounter(0)
+    starCounter.decrement()
+    expect(starCounter.getValue()).toBe(-1)
   })
 })
 
-describe('parallelHunt', () => {
-  beforeEach(() => {
-    vi.clearAllMocks()
-    vi.useFakeTimers()
+describe('2. Cosmic Signal Broadcaster', async () => {
+  it('should broadcast signals correctly', async () => {
+    const signals = document.querySelector('#signalBroadcaster')
+    await sleep(110)
+    expect(signals.classList).toContain('signal-1')
+    expect(signals.classList).not.toContain('signal-2')
+    await sleep(110)
+    expect(signals.classList).toContain('signal-2')
+    expect(signals.classList).not.toContain('signal-1')
+    await sleep(110)
+    expect(signals.classList).toContain('signal-3')
+    expect(signals.classList).not.toContain('signal-2')
+    await sleep(110)
+    expect(signals.classList).toContain('signal-4')
+    expect(signals.classList).not.toContain('signal-3')
+    await sleep(110)
+    expect(signals.classList).toContain('signal-5')
+    expect(signals.classList).not.toContain('signal-4')
   })
-
-  afterEach(() => {
-    vi.useRealTimers()
-  })
-  it('should find all treasures in parallel', async () => {
-    // Mock treasure data
-    const treasures = [
-      { 'name': 'Gold Coin',
-        'delay': 100 },
-      { 'name': 'Silver Coin',
-        'delay': 200 },
-      { 'name': 'Diamond',
-        'delay': 300 }
-    ]
+})
 
 
-    const startTime = Date.now()
-    const result = await mainModule.parallelHunt(treasures)
-    const endTime = Date.now()
+describe('3. Cosmic Adjuster', () => {
+  it('should add the specified number of rockets, planets, and airships', () => {
+    const rockets = document.querySelector('#rockets')
+    const planets = document.querySelector('#planets')
+    const airships = document.querySelector('#airships')
 
-    // Verify results
-    expect(result).toHaveLength(3)
-    expect(result[0].name).toBe('Gold Coin')
-    expect(result[1].name).toBe('Silver Coin')
-    expect(result[2].name).toBe('Diamond')
 
-    // Verify parallel execution
-    expect(endTime - startTime).toBeLessThan(400)
-
-    // Verify findTreasure call count
-    expect(mainModule.findTreasure).toHaveBeenCalledTimes(3)
+    expect(rockets.children.length).toBe(6)
+    expect(planets.children.length).toBe(5)
+    expect(airships.children.length).toBe(4)
   })
 })

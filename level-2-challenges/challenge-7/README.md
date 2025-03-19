@@ -1,132 +1,71 @@
 ---
 difficulty: 2
 tags: codechallenge, training
-chapter: "Chapter 4: Advanced Functions"
+chapter: "Chapter 3: Events"
 training: true
 ---
 
-# Detective Agency: First Class Functions Challenge
+# Enchanted Forest Game: Common UI Events
 
 ## Challenge Description
 
-In this challenge, Your mission is to solve a series of complex cases using JavaScript functions.
+In this challenge, you are a brave adventurer navigating through an enchanted forest filled with magical creatures and ancient artifacts. Use your JavaScript event handling skills to complete various tasks!
 
-Complete all tasks in `/src/main.js` and prove your prowess as a Legendary Detective!
+Complete all tasks in `/src/main.js` and demonstrate your proficiency in handling various JavaScript events.
 
 ## Requirements
 
-1. Analyze Evidence:
+1. Avoid the Enchanted Spider:
 
-   - Implement a function `analyzeEvidence` that behaves like `Array.prototype.reduce`.
+- Find a `div` with `id="spiderWeb"` on the page.
+- When the mouse hovers over this `div`, add the class `spider-web` to the element.
+- When the mouse leaves this `div`, remove the class `spider-web` to the element.
+- When the class is added you should see a spider web spider-web on the page.
 
-> 💡 HINT: You can [read about how reduce works in the MDN docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce).
+![screenshot of solution](https://github.com/JavaScript-Certification/images/blob/main/images/training/3-3/spider.gif?raw=true)
 
-   - This function will help you analyze the pieces of evidence collected from the crime scenes.
-   - Example usage:
-  
-     ```javascript
-     const evidence = [2, 4, 6, 8];
-     const totalEvidence = analyzeEvidence(evidence, (acc, val) => acc + val, 0);
-     console.log(totalEvidence); // Output: 20
-     ```
-> 🗒️ NOTE: Please don't use `Array.prototype.reduce` function to implement the function.
+2. Activate Magic Portal:
 
-2. Enhance Investigation Skills:
+- Find a form with `id="magicPortalForm"` on the page.
+- When the Enter key is pressed, log "Magic Portal activated!" and prevent the form's default submission behavior.
 
-   - Implement a higher-order function `createSkillEnhancer` that takes a number `n` and returns a function that multiplies the detective's skill level by `n`.
-   - This function will help you enhance your investigation skills.
-   - Example usage:
-  
-     ```javascript
-     const doubleSkill = createSkillEnhancer(2);
-     console.log(doubleSkill(5)); // Output: 10
-     ```
+3. Track Fairy Movements:
 
-3. Track Suspect Movements:
+- When the pointer is moved while holding down the `Ctrl` key, set the top and left position of the element with the class `fairy` to the event `clientX` and `clientY` properties so that the fairy svg image follows the mouse around.
 
-   - Implement a function `trackMovements` that takes an array of locations and a callback function.
-   - Simulate tracking by iterating over the locations with 200ms delay using `setTimeout` and call the callback with each location.
-   - Example usage:
-  
-     ```javascript
-     const locations = ['Park', 'Mall', 'Cafe'];
-     trackMovements(locations, (location) => {
-      // Output: Suspect spotted at: Park, 
-      // Suspect spotted at: Mall, Suspect spotted at: Cafe 
-      // at 200ms intervals
-       console.log(`Suspect spotted at: ${location}`); 
-     });
-     ```
+> 💡 HINT: The `clientX` and `clientY` props are provided as numbers while the style `top` and `left` expect a value that includes the unit `px`
 
-> 💡 HINT: You can [read up on setTimeout in the MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout).
+![screenshot of solution](https://github.com/JavaScript-Certification/images/blob/main/images/training/3-3/fairy.gif?raw=true)
 
-4. Combine Investigation Techniques:
+4. Summon Fireflies:
 
-   - Implement a function `composeTechniques` that takes multiple functions as arguments and returns a new function that is the composition of those functions.
-   - The functions should be applied from right to left to form a complete investigation technique.
-   - Example usage:
+- Find a button with `id="fireflyButton"` on the page.
+- When the button is pressed, add the class `firefly` to the button.
+- When the button is released, remove the class `firefly` to the button.
 
-     ```javascript
-     const addForensics = x => x + ' with Forensic Analysis';
-     const addInterrogation = x => x + ' with Interrogation';
-     const combinedTechnique = composeTechniques(addInterrogation, addForensics);
-     // Output: Investigation with Forensic Analysis with Interrogation
-     console.log(combinedTechnique('Investigation')); 
-     ```
+![screenshot of solution](https://github.com/JavaScript-Certification/images/blob/main/images/training/3-3/firefly.gif?raw=true)
 
-5. Filter Suspect List:
+5. Scroll through Ancient Scrolls:
 
-   - Implement a function `filterSuspects` that takes an array of suspects and a predicate function.
-   - The function should return an array of suspects that satisfy the predicate.
-   - Example usage:
-     ```javascript
-     const suspects = [
-       { name: 'Alice', age: 30, location: 'Park' },
-       { name: 'Bob', age: 25, location: 'Mall' },
-       { name: 'Charlie', age: 35, location: 'Cafe' }
-     ];
-     const isAtPark = suspect => suspect.location === 'Park';
-     const suspectsAtPark = filterSuspects(suspects, isAtPark);
-     // Output: [{ name: 'Alice', age: 30, location: 'Park' }]
-     console.log(suspectsAtPark); 
-     ```
-> 🗒️ NOTE: Please don't use `Array.prototype.filter` function to implement the function.
+- Find a container with `id="scrollContainer"` on the page.
+- When the container is scrolled, update the `top` property of the element with the class="tiger" to the container's `scrollTop` value.
 
-## What to Expect
+![screenshot of solution](https://github.com/JavaScript-Certification/images/blob/main/images/training/3-3/tiger.gif?raw=true)
 
-Your output should look similar to this:
+6. Navigate through the Maze:
 
-1. Analyze Evidence:
+- When the arrow keys are pressed, move the explorer's position by 10px in the corresponding direction using the `top` and `left` properties of the element with the `class="explorer"`.
 
-```plaintext
-Output: 20
-```
+  - `ArrowUp`: Add 10px to the `top` property.
+  - `ArrowDown`: Subtract 10px from the `top` property.
+  - `ArrowLeft`: Subtract 10px from the `left` property.
+  - `ArrowRight`: Add 10px to the `left` property.
 
-2. Enhance Investigation Skills:
+![screenshot of solution](https://github.com/JavaScript-Certification/images/blob/main/images/training/3-3/explorer.gif?raw=true)
 
-```plaintext
-Output: 10
-```
+7. Detect Magical Creatures:
 
-3. Track Suspect Movements:
-
-(These will not all appear in order because of the delay caused by setTimeout)
-
-```plaintext
-Output: Suspect spotted at: Park
-Output: Suspect spotted at: Mall
-Output: Suspect spotted at: Cafe
-```
-
-1. Combine Investigation Techniques:
-
-```plaintext
-Output: Investigation with Forensic Analysis with Interrogation
-```
-
-5. Filter Suspect List:
-
-```plaintext
-Output: [{ name: 'Alice', age: 30, location: 'Park' }]
-```
-
+- Find an area with `id="creatureDetector"` on the page.
+- When the pointer enters this area, log "Magical creature detected!".
+- When the pointer leaves this area, log "Magical creature left!".
+- Ensure that entering or leaving any child elements within this area also triggers the log messages.

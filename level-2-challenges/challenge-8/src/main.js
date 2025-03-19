@@ -1,64 +1,67 @@
 // complete the challenge here 👇
 
 
-// 1. Star Counter
+// 1. Analyze Evidence
 
-export function createStarCounter (initialValue) {
+export function analyzeEvidence () {}
 
-}
-
-const starCounter = createStarCounter(3)
-starCounter.increment()
-starCounter.increment()
-starCounter.decrement()
-starCounter.decrement()
-starCounter.decrement()
-
-
-const starContainer = document.querySelector('#starContainer')
-const starCount = starCounter.getValue()
-for (let i = 0; i < starCount; i++) {
-  const star = document.createElement('img')
-  star.src = '/star.svg'
-  star.alt = 'star'
-  star.classList.add('star')
-  starContainer.appendChild(star)
-}
-
-// 2. Cosmic Signal Broadcaster
-const signalBroadcaster = document.querySelector('#signalBroadcaster')
-export function broadcastSignals () {
-  for (var i = 1; i <= 5; i++) {
-    setTimeout(() => {
-      signalBroadcaster.classList.add(`signal-${i}`)
-      if (i > 1) {
-        signalBroadcaster.classList.remove(`signal-${i - 1}`)
-      }
-    }, i * 100)
-  }
-}
-
-broadcastSignals()
+const evidence = [
+  2,
+  4,
+  6,
+  8
+]
+const totalEvidence = analyzeEvidence(evidence, (acc, val) => acc + val, 0)
+console.log(totalEvidence)
 
 
-// 3. Function Chain: Cosmic Adjuster
-const planets = document.querySelector('#planets')
-const rockets = document.querySelector('#rockets')
-const airships = document.querySelector('#airships')
+// 2. Enhance Investigation Skills
 
-function createItem (container, count) {
-  for (let i = 0; i < count; i++) {
-    const planet = document.createElement('span')
-    container.appendChild(planet)
-  }
-}
+export function createSkillEnhancer () {}
 
-export function createCosmicAdjuster (initialState) {
+const doubleSkill = createSkillEnhancer(2)
+console.log(doubleSkill(5))
 
-}
 
-const adjuster = createCosmicAdjuster({ 'rockets': 1,
-  'planets': 2,
-  'airships': 3 })
-adjuster.addRockets(5).addPlanets(3).
-  addAirships(1)
+// 3. Track Suspect Movements
+
+export function trackMovements () {}
+
+const locations = [
+  'Park',
+  'Mall',
+  'Cafe'
+]
+trackMovements(locations, (location) => {
+  console.log(`Suspect spotted at: ${location}`)
+})
+
+
+// 4. Combine Investigation Techniques
+
+export function composeTechniques () {}
+
+const addForensics = (x) => x + ' with Forensic Analysis'
+const addInterrogation = (x) => x + ' with Interrogation'
+const combinedTechnique = composeTechniques(addInterrogation, addForensics)
+console.log(combinedTechnique('Investigation'))
+
+
+// 5. Filter Suspect List
+
+export function filterSuspects () {}
+
+const suspects = [
+  { 'name': 'Alice',
+    'age': 30,
+    'location': 'Park' },
+  { 'name': 'Bob',
+    'age': 25,
+    'location': 'Mall' },
+  { 'name': 'Charlie',
+    'age': 35,
+    'location': 'Cafe' }
+]
+const isAtPark = (suspect) => suspect.location === 'Park'
+const suspectsAtPark = filterSuspects(suspects, isAtPark)
+console.log(suspectsAtPark)

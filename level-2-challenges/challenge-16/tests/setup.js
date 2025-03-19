@@ -1,9 +1,11 @@
 import { JSDOM } from 'jsdom'
-import fs from 'fs'
-import path from 'path'
+import html from '../index.html?raw'
+import mainJS from '../src/main.js?raw'
 
-const html = fs.readFileSync(path.resolve(__dirname, '../index.html'), 'utf8')
-const dom = new JSDOM(html)
+const transformedHtml = html
+
+const dom = new JSDOM(transformedHtml, { 'runScripts': 'dangerously' })
+
 
 global.window = dom.window
 global.document = dom.window.document

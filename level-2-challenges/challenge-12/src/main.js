@@ -1,47 +1,60 @@
 // complete the challenge here 👇
 
-import { pikachu, charmander, newSkills } from '../public/data'
+import { pokemonData } from '../public/data'
 import {
-  renderPetPetAttributes,
-  renderPetHealthIndex,
-  renderSkillList,
-  renderPetProtectionStatus,
-  renderBlazeAbilityExist
+  displayTeamOverview,
+  displayPokedex,
+  displayChallengeResults
 } from './render'
 
-// 1. Pet Attribute List
-export function listPetAttributes (pet) {
+// 1. Pokédex Update
+export function updatePokedex (pokemonArray) {
 }
 
 
-renderPetPetAttributes(listPetAttributes(pikachu))
-
-// 2. Pet Health Index Calculation
-export function calculatePetHealth (petStatus) {
-
+// 2. Type Filtering Master
+export function filterByType (pokemonArray, type) {
 }
 
 
-renderPetHealthIndex(calculatePetHealth(charmander.status))
-
-
-// 3. Pet Skill Upgrade
-export function upgradePetSkills (currentSkills, newSkills) {
+// 3. Team Power Assessment
+export function calculateTeamPower (pokemonArray) {
 }
 
 
-renderSkillList(upgradePetSkills(pikachu.skills, newSkills))
-
-// 4. Rare Pet Protection
-export function protectRarePet (rarePet) {
+// 4. Rare Pokémon Explorer
+export function findRarePokemon (pokemonArray) {
 }
 
 
-renderPetProtectionStatus(protectRarePet(pikachu))
-
-// 5. Pet Special Ability Check
-export function checkSpecialAbility (pet, abilityName) {
+// 5. Evolution Journey
+export function evolveAllPokemon (pokemonArray) {
 }
 
 
-renderBlazeAbilityExist(checkSpecialAbility(charmander, 'blaze'))
+// 6. Championship Challenge
+export function readyForChampionship (pokemonArray) {
+}
+
+
+// You do not need to focus on and modify the following code
+const _data = structuredClone(pokemonData)
+// 2. Type Filtering Master
+const fireType = filterByType(_data, 'Fire')
+// 4. Rare Pokémon Explorer
+const rarePokemon = findRarePokemon(_data)
+
+displayChallengeResults(fireType, rarePokemon)
+// 5. Evolution Journey
+evolveAllPokemon(_data)
+// 3. Team Power Assessment
+const teamPower = calculateTeamPower(_data)
+// 6. Championship Challenge
+const isReady = readyForChampionship(_data)
+
+displayTeamOverview(_data, teamPower, isReady)
+// 1. Pokédex Update
+const updatedPokedex = updatePokedex(_data)
+
+displayPokedex(updatedPokedex)
+

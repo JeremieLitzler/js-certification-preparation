@@ -1,47 +1,44 @@
 ---
 difficulty: 2
-tags: Coding Challenge, training
-chapter: "Chapter 5: Asynchronous JavaScript and API's"
+tags: Code Challenge, training
+chapter: "Chapter 4: Advanced Functions"
 training: true
 ---
 
-# Treasure Hunt: Promises and Async/Await Challenge
+# Interstellar Navigator: Advanced Function Challenge
 
 ## Challenge Description
 
-In this challenge, you will embark on an exciting treasure hunt adventure using JavaScript's asynchronous features.
+In this challenge, Your mission is to become an Interstellar Navigator by using JavaScript functions.
 
 Complete all tasks in `/src/main.js`.
 
 ## Requirements
 
-1. Treasure Finder:
+1. Star Counter:
 
-   - As a treasure hunter, you need a reliable way to find treasures asynchronously.
-   - Implement a function `findTreasure` that returns a treasure object after a delay.
-   - The function should accept `treasureName` and `delay` in milliseconds.
-   - The returned treasure object should have properties `name` and `foundAt` (timestamp when the treasure was found).
-   - This function will be invoked in the requirements below.
+  - As you navigate through the stars, you need a reliable way to count them.
+  - Implement a function `createStarCounter` that returns an object. This object should have a private `value` variable initialized with the provided `initialValue` and three methods: `increment`, `decrement`, and `getValue`.
+  - The `increment` method should increase the `value` by 1.
+  - The `decrement` method should decrease the `value` by 1.
+  - The `getValue` method should return the current `value`.
 
-> 💡 HINT - the [setTimeout function](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout) and [promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) will be very useful for this challenge
+![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/4-2/star-counter.png)
 
-2. Sequential Treasure Hunt:
+2. Cosmic Signal Broadcaster:
 
-   - You need to find multiple treasures in a specific order.
-   - Implement a function `sequentialHunt` that accepts an array of treasure names and delays.
-   - Find each treasure in sequence using the `findTreasure` function. 
-   - For each treasure found, immediately call the provided `renderTreasure` method to display it.
-   - Return an array of all found treasures after all treasures have been found and rendered.
+  - As an Interstellar Navigator, you have a function `broadcastSignals` that is supposed to broadcast a series of cosmic signals. Each signal should be sent after a specific time interval and must add a corresponding class to a container in the DOM.
+  - The current implementation of `broadcastSignals` has a bug. Instead of adding the correct class for each signal, it adds the same class for each signal. This is causing confusion in the signal broadcast system.
+  - Identify and fix the bug in the `broadcastSignals` function. Ensure that each signal is sent after 100 milliseconds and adds the correct class (`signal-1`, `signal-2`, etc.) to the container with id `signalBroadcaster`. The previous signal class should be removed when the next signal is added.
 
-![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/5-1/sequential-treasure.gif)
+![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/4-2/signal-broadcaster.gif)
 
-3. Parallel Treasure Hunt:
+3. Function Chain: Cosmic Adjuster:
 
-   - Sometimes, to save time, treasures can be found in parallel.
-   - Implement a function `parallelHunt` that accepts an array of treasure names and delays.
-   - Asynchronously find all treasures in parallel, logging the name when each treasure is found.
-   - Receive the array of treasures returned by the `parallelHunt` function, and call the provided `renderTreasure` method for each treasure to display it.
+   - To maintain the balance of the cosmos, you need to adjust the number of rockets, planets, and airships.
+   - Implement a function `createCosmicAdjuster` that returns an object with chainable methods `addRockets`, `addPlanets`, and `addAirships`. Each method should add the specified number of elements to the respective container in the DOM.
+   - The `addRockets` method should add `span` elements to the container with id `rockets`.
+   - The `addPlanets` method should add `span` elements to the container with id `planets`.
+   - The `addAirships` method should add `span` elements to the container with id `airships`.
 
-> 💡 HINT - [Promise.all()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) is useful for know when multiple promises ALL resolve
-
-![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/5-1/parallel-treasure.gif)
+![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/4-2/cosmic-adjuster.png)

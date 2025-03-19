@@ -1,36 +1,52 @@
-import { describe, it, expect } from 'vitest'
-import { listPetAttributes, calculatePetHealth, upgradePetSkills, protectRarePet, checkSpecialAbility } from '../src/main'
-import { pikachu, charmander, newSkills } from '../public/data'
+import { expect, describe, it } from 'vitest'
+import { pokemonData } from '../public/data'
 
-describe('Pet Functions Tests', () => {
-  it('should correctly list pet attributes', () => {
-    const attributes = listPetAttributes(pikachu)
-    expect(attributes).toContain('name')
-    expect(attributes).toContain('type')
-    expect(attributes).toContain('skills')
+import {
+  updatePokedex,
+  filterByType,
+  calculateTeamPower,
+  findRarePokemon,
+  evolveAllPokemon,
+  readyForChampionship
+} from '../src/main'
+
+const _data = structuredClone(pokemonData)
+describe('Pokemon functions tests', () => {
+  it('updatePokedex should add discoveredAt property', () => {
+    const result = updatePokedex(_data)
+    expect(result[0]).toHaveProperty('discoveredAt')
+    expect(typeof result[0].discoveredAt).toBe('number')
   })
 
-  it('should correctly calculate pet health index', () => {
-    const health = calculatePetHealth(charmander.status)
-    expect(health).toBe(65)
+  it('filterByType should correctly filter Pokemon by type', () => {
+    const result = filterByType(_data, 'Ice')
+    expect(result).toHaveLength(1)
+    expect(result[0].name).toBe('Articuno')
   })
 
-  it('should correctly upgrade pet skills', () => {
-    const upgradedSkills = upgradePetSkills(pikachu.skills, newSkills)
-    expect(upgradedSkills).toEqual({ ...pikachu.skills,
-      ...newSkills })
+  it('calculateTeamPower should correctly calculate total team power', () => {
+    const result = calculateTeamPower(_data)
+    expect(result).toBe(523)
   })
 
-  it('should freeze rare pet object', () => {
-    const protectedPet = protectRarePet(pikachu)
-    expect(Object.isFrozen(protectedPet)).toBe(true)
-    expect(() => {
-      protectedPet.name = 'NewMew'
-    }).toThrow()
+  it('findRarePokemon should find the legendary Pokemon', () => {
+    const result = findRarePokemon(_data)
+    expect(result.name).toBe('Mewtwo')
   })
 
-  it('should correctly check pet special ability', () => {
-    expect(checkSpecialAbility(charmander, 'blaze')).toBe(true)
-    expect(checkSpecialAbility(charmander, 'watergun')).toBe(false)
+  it('evolveAllPokemon should increase level and power of all Pokemon', () => {
+    const copyArray = JSON.parse(JSON.stringify(_data))
+    evolveAllPokemon(copyArray)
+    copyArray.forEach((item, index) => {
+      expect(item.level).toBe(_data[index].level + 1)
+      expect(item.power).toBe(_data[index].power + 10)
+    })
+  })
+
+  it('readyForChampionship should correctly determine if team is ready', () => {
+    expect(readyForChampionship(_data)).toBe(false)
+    const highLevelTeam = _data.map((p) => ({ ...p,
+      'level': 50 }))
+    expect(readyForChampionship(highLevelTeam)).toBe(true)
   })
 })

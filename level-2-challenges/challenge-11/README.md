@@ -1,57 +1,52 @@
 ---
 difficulty: 2
 tags: Coding Challenge, training
-chapter: "Chapter 6: Advanced Array and Object Methods"
+chapter: "Chapter 5: Asynchronous JavaScript and API's"
 training: true
 ---
 
-# Pokémon Training Camp: Advanced Array Methods Challenge
+# Product Explorer: Data Fetching and JSON Challenge
 
 ## Challenge Description
 
-Welcome to the Pokémon Training Camp! As a new trainer, you need to use JavaScript's advanced array methods to manage and nurture your Pokémon team.
+In this challenge, you will use JavaScript's `fetch` API and JSON data to complete a product exploration task.
 
-Complete all tasks in `/src/main.js` to become the very best Pokémon trainer!
+Complete all tasks in `/src/main.js`.
 
 ## Requirements
 
-1. Pokédex Update:
+1. Fetch All Products:
 
-   - Implement the `updatePokedex` function that accepts an array of Pokémon objects.
-   - Add a `discoveredAt` property (current timestamp) to each Pokémon.
-   - Return the updated Pokémon array.
+   - Implement a `fetchAllProducts` function that uses the `fetch` API to retrieve product data from the `https://dummyjson.com/products` endpoint.
+   - The function should return a JSON object containing product information.
+   - The returned JSON object should include `products` (list of products), `total`, `skip`, and `limit` properties.
+   - Loop over each of the products and call the provided `renderProduct` function for each of them
+  
+![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/5-2/1-fetch-all-products.gif)
 
-2. Type Filtering Master:
+2. Fetch Single Product Details:
 
-   - Implement the `filterByType` function that accepts a Pokémon array and a type (e.g., "Fire", "Water", "Grass").
-   - Return an array containing only Pokémon of the specified type.
+   - Implement a `fetchProductDetails` function that uses the `fetch` API to retrieve details of a single product from the `https://dummyjson.com/products/:id` endpoint.
+   - The function should accept an `id` parameter and return a JSON object containing the product's detailed information.
+   - The returned JSON object should include all properties of the product, such as `id`, `title`, `description`, `price`, etc.
+   - Render this product to the page with the provided `renderProduct` function
 
-3. Team Power Assessment:
+> 💡 HINT: the `renderProduct` function appends items to the page so this one will be added to the current list of products
 
-   - Implement the `calculateTeamPower` function that accepts a Pokémon array.
-   - Calculate the team's total battle power (sum of each Pokémon's `power` property).
-   - Return the team's total battle power.
+![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/5-2/2-single-product.jpg)
 
-4. Rare Pokémon Explorer:
+3. Error Handling:
 
-   - Implement the `findRarePokemon` function that accepts a Pokémon array.
-   - Locate the first Pokémon with a rarity of "Legendary".
-   - Return the found Pokémon object, or `undefined` if not found.
+   - Implement basic error handling in the `fetchProductDetails` function.
+   - If there's an error with the response (like a 404), return an object from the function that looks like this:
+   
+   ```javascript
+   { error: { message: res.statusText, status: res.status } }
+   ```
 
-5. Evolution Journey:
+   > 💡 HINT: The `res.ok` property will be false if the request returns a status code not in the 200 range
 
-   - Implement the `evolveAllPokemon` function that accepts a Pokémon array.
-   - Increase each Pokémon's level by 1 and power by 10.
-   - Modify the original array directly, no need to return anything.
+   - Test it out by calling a `fetchProductDetails` on an id that doesn't exist (you can use `9999`)
+   - Render the result with the `renderProduct` function
 
-6. Championship Challenge:
-
-   - Implement the `readyForChampionship` function that accepts a Pokémon array.
-   - Check if all Pokémon are at level 50 or above.
-   - Return a boolean indicating whether the team is ready for the championship.
-
-## What to Expect
-
-The Pokémon training camp displayed as expected:
-
-![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/6-1/pokemon.jpg)
+![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/5-2/3-error.jpg)

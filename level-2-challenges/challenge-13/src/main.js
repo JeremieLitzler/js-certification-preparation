@@ -1,50 +1,47 @@
 // complete the challenge here 👇
 
-import { data } from '../public/data'
+import { pikachu, charmander, newSkills } from '../public/data'
 import {
-  renderTrackMetadata,
-  renderPlaylist,
-  renderAudioEffects,
-  renderMixParameters,
-  renderInstrumentTuning
+  renderPetPetAttributes,
+  renderPetHealthIndex,
+  renderSkillList,
+  renderPetProtectionStatus,
+  renderBlazeAbilityExist
 } from './render'
 
-// 1. Track Metadata Formatter
-export function formatTrackMetadata (title, artist, genres) {
-
-}
-
-renderTrackMetadata(formatTrackMetadata(data.track.title, data.track.artist, data.track.genres))
-
-// 2. Playlist Creator
-export function createPlaylist (existingPlaylist, newTracks) {
-
+// 1. Pet Attribute List
+export function listPetAttributes (pet) {
 }
 
 
-renderPlaylist(createPlaylist(data.playlist, data.newTracks[0], data.newTracks[1]))
+renderPetPetAttributes(listPetAttributes(pikachu))
 
-
-// 3. Audio Effect Merger
-export function mergeAudioEffects (defaultEffects, customEffects) {
+// 2. Pet Health Index Calculation
+export function calculatePetHealth (petStatus) {
 
 }
 
 
-renderAudioEffects(mergeAudioEffects(data.defaultEffects, data.customEffects))
+renderPetHealthIndex(calculatePetHealth(charmander.status))
 
-// 4. Mix Assignment
-export function assignMixParameters (params) {
 
+// 3. Pet Skill Upgrade
+export function upgradePetSkills (currentSkills, newSkills) {
 }
 
 
-renderMixParameters(assignMixParameters(data.mixParameters))
+renderSkillList(upgradePetSkills(pikachu.skills, newSkills))
 
-
-// 5. Instrument Tuning Check
-export function checkInstrumentTuning (tuningObject, instrumentName) {
+// 4. Rare Pet Protection
+export function protectRarePet (rarePet) {
 }
 
 
-renderInstrumentTuning(checkInstrumentTuning(data.tuning, 'violin'))
+renderPetProtectionStatus(protectRarePet(pikachu))
+
+// 5. Pet Special Ability Check
+export function checkSpecialAbility (pet, abilityName) {
+}
+
+
+renderBlazeAbilityExist(checkSpecialAbility(charmander, 'blaze'))

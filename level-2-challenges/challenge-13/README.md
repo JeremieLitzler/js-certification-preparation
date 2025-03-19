@@ -1,53 +1,52 @@
 ---
 difficulty: 2
-tags: Coding Challenge, ES6 Features
-chapter: "Chapter 7: ES6+ Features"
+tags: Coding Challenge, Object Methods
+chapter: "Chapter 6: Advanced Array and Object Methods"
+training: true
 ---
 
-# Harmony Hub:  ES6+ Syntax Challenge
+# Digital Pet Paradise: Advanced Object Methods Challenge
 
 ## Challenge Description
 
-Welcome to Harmony Hub, a cutting-edge digital music studio! As a newly hired JavaScript audio engineer, you need to use modern JavaScript features to create various audio processing and music production functions.
+Welcome to Digital Pet Paradise! As a virtual pet caretaker, you need to use JavaScript's advanced object methods to care for and nurture your digital pets.
 
-Complete all tasks in `/src/main.js` to become Harmony Hub's star audio programmer!
+Complete all tasks in `/src/main.js` to become the best digital pet caretaker!
 
 ## Requirements
 
-1. Track Metadata Formatter:
+1. Pet Attribute List:
 
-   - Implement the `formatTrackMetadata` function that accepts a title, artist, and a variable number of genres as parameters.
-   - Return a formatted html string containing all provided information.
-   - Expect: 
+   - Implement the `listPetAttributes` function that accepts a pet object.
+   - Return an array of all attribute names for that pet.
 
-      ```html
-            <div class="track-title">Bohemian Rhapsody</div>
-            <div class="track-artist">Queen</div>
-            <div class="track-genres">Rock, Progressive Rock, Opera Rock</div>
-      ```
+2. Pet Health Index Calculation:
 
-2. Playlist Creator:
+   - Implement the `calculatePetHealth` function that accepts a pet status object.
+   - Calculate the average of all health-related metrics.
+   - Return the pet's overall health index.
 
-   - Implement the `createPlaylist` function that accepts an existing playlist array and any number of new track IDs.
-   - Return a new array containing all existing and newly added tracks.
+3. Pet Skill Upgrade:
 
-3. Audio Effect Merger:
+   - Implement the `upgradePetSkills` function that accepts two objects: current skills and new skills.
+   - Merge the new skills into the current skills without modifying the original object.
+   - Return the upgraded pet skills object.
 
-   - Implement the `mergeAudioEffects` function that accepts a default effects object and a custom effects object.
-   - Return a new object merging properties from both input objects, prioritizing values from the custom effects.
+4. Rare Pet Protection:
 
-4. Mix Assignment:
+   - Implement the `protectRarePet` function that accepts a rare pet object.
+   - Ensure that the rare pet's attributes cannot be modified.
+   - Return the protected rare pet object.
 
-   - Implement the `assignMixParameters` function that accepts a mix parameters object containing volume, pan.
-   - Return a new object with all properties from the input object and add a default 'isMuted' property set to false.
+5. Pet Special Ability Check:
 
-5. Instrument Tuning Check:
+   - Implement the `checkSpecialAbility` function that accepts a pet object and an ability name.
+   - Check if the pet directly has the specified special ability (not including inherited properties).
+   - Return a boolean indicating whether the pet has that special ability.
 
-   - Implement the `checkInstrumentTuning` function that accepts a tuning object and an instrument name.
-   - Return the tuning frequency for the specified instrument, defaulting to 440 if not present.
 
-## Expected Output
+## What to Expect
 
-After completing the challenge, you will see Harmony Hub's Digital Audio Workstation interface:
+ The pet cards displayed as expected:
 
-![Harmony Hub DAW Screenshot](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/7-1/harmony-hub.jpg)
+![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/6-2/pet-card.jpg)

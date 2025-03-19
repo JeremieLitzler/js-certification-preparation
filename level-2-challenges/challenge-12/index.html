@@ -6,53 +6,33 @@
   <link rel="stylesheet" href="/style.css" />
   <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digital Pet Paradise</title>
+  <title>Pokémon Training Camp</title>
 </head>
 
 <body>
-    <div class="card">
-        <h2 class="pet-name">Pikachu</h2>
-        <img src="https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/6-2/pet.png" alt="Pikachu" class="pet-image">
-        
-        <!-- Pet Attributes List -->
-        <div class="attribute-section">
-            <h3 class="section-title">Attributes:</h3>
-            <div class="attribute-list" id="attributes">
-            </div>
-        </div>
-        
-        <!-- Pet Health Index -->
-        <div class="health-section">
-            <h3 class="section-title">Health Index:</h3>
-            <div class="health-bar">
-                <div class="health-bar-fill"></div>
-            </div>
-            <span class="health-text"><span  id="healthIndex"></span>/100</span>
-        </div>
-        
-        <!-- Pet Skills -->
-        <div class="skills-section">
-            <h3 class="section-title">Skills:</h3>
-            <ul class="skill-list" id="skillList">
-            </ul>
-        </div>
-        
-        <!-- Pet Protection Check -->
-        <div class="protection-section">
-            <h3 class="section-title">Protection Status:</h3>
-            <span class="status-badge protected" id="protectionStatus"></span>
-        </div>
-        
-        <!-- Special Ability Check -->
-        <div class="ability-section">
-            <h3 class="section-title">Has "blaze" ability:</h3>
-            <span class="status-badge ability" id="abilityName">Static</span>
-        </div>
-    </div>
-    <script type="module">
-      import  {} from "./src/main.js"
-    </script>
-    <!--replace with main.js-->
+  <div class="container">
+    <header class="header">
+        <h1>Pokemon Training Camp Challenge</h1>
+    </header>
+    <main class="main-content">
+        <section class="team-overview">
+            <h2>Team Overview</h2>
+            <div id="teamOverview" class="overview-card"></div>
+        </section>
+        <section class="pokedex">
+            <h2>Pokedex</h2>
+            <div id="pokedex" class="pokemon-list"></div>
+        </section>
+        <section class="challenge-results">
+            <h2>Challenge Results</h2>
+            <div id="challengeResults" class="results-list"></div>
+        </section>
+    </main>
+  </div>
+  <script type="module">
+    import  {} from "./src/main.js"
+  </script>
+  <!--replace with main.js-->
 </body>
 
 </html>

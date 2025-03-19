@@ -1,51 +1,49 @@
-
-export const data = {
-  'track': {
-    'title': 'Bohemian Rhapsody',
-    'artist': 'Queen',
-    'genres': [
-      'Rock',
-      'Progressive Rock',
-      'Opera Rock'
-    ]
+export const pikachu = {
+  'name': 'Pikachu',
+  'type': 'Electric',
+  'level': 5,
+  'happiness': 80,
+  'status': {
+    'energy': 70,
+    'hunger': 30,
+    'mood': 90,
+    'hygiene': 80
   },
-  'playlist': [
-    'Bohemian Rhapsody - Queen',
-    'Stairway to Heaven - Led Zeppelin',
-    'Imagine - John Lennon',
-    'Billie Jean - Michael Jackson'
-  ],
-  'newTracks': [
-    'Shape of You - Ed Sheeran',
-    'Blinding Lights - The Weeknd'
-  ],
-  'defaultEffects': {
-    'reverb': 0.3,
-    'delay': 0.2,
-    'compression': 0.4
+  'skills': {
+    'tackle': 10,
+    'quickAttack': 15,
+    'thunderShock': 20
   },
-  'customEffects': {
-    'reverb': 0.5,
-    'chorus': 0.6,
-    'eq': {
-      'low': 1.2,
-      'mid': 0.8,
-      'high': 1.1
-    }
-  },
-  'mixParameters': {
-    'volume': 0.75,
-    'pan': -0.5,
-    'effects': [
-      'reverb',
-      'compression',
-      'eq'
-    ]
-  },
-  'tuning': {
-    'guitar': 440, // A4
-    'bass': 41.20, // E1
-    'piano': 261.63, // C4
-    'violin': 440 // A4
+  'abilities': {
+    'static': true,
+    'lightningRod': false
   }
 }
+
+export const charmander = {
+  'name': 'Charmander',
+  'type': 'Fire',
+  'level': 5,
+  'happiness': 75,
+  'status': {
+    'energy': 65,
+    'hunger': 40,
+    'mood': 85,
+    'hygiene': 70
+  },
+  'skills': {
+    'scratch': 10,
+    'ember': 15,
+    'smokescreen': 5
+  },
+  'abilities': {
+    'blaze': true,
+    'solarPower': false
+  }
+}
+
+export const newSkills = {
+  'thunderbolt': 40,
+  'ironTail': 30
+}
+

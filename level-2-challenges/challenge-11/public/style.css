@@ -4,77 +4,39 @@
 
 
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f3f4f6;
-  margin: 0;
-  padding: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+#productContainer {
+  @apply gap-4 flex flex-wrap items-center justify-center;
 }
 
-.container {
-  width: 100%;
-  max-width: 450px;
-  background-color: white;
-  border-radius: 0.75rem;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+.product-card {
+  @apply bg-white rounded-lg shadow-md p-6 max-w-sm mx-auto h-[500px] ;
 }
 
-.header {
-  background-color: #dc2626;
-  padding: 1rem;
+.product-image {
+  @apply w-full h-48 object-cover mb-4 rounded;
 }
 
-.header h1 {
-  color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  margin: 0;
+.product-title {
+  @apply text-xl font-bold mb-2;
 }
 
-.main-content {
-  padding: 1rem;
+.product-description {
+  @apply text-gray-600 mb-4;
 }
 
-h2 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
+.product-price {
+  @apply text-2xl font-bold text-green-600;
 }
 
-.team-overview, .pokedex, .challenge-results {
-  margin-bottom: 1.5rem;
+.product-category {
+  @apply bg-blue-500 text-white px-3 py-1 rounded-full text-sm;
 }
 
-.overview-card, .pokemon-card, .result-card {
-  background-color: #f3f4f6;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 0.75rem;
+.product-rating {
+  @apply mt-4;
 }
 
-.pokemon-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.pokemon-card h3, .result-card h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
-pre {
-  font-size: 0.8rem;
-  overflow-x: auto;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+.error-message {
+  @apply bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative;
 }

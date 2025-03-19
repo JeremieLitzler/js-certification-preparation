@@ -1,23 +1,13 @@
 // complete the challenge here 👇
 
 
-// 1. Avoid the Enchanted Spider
+// 1. Prevent Hyperlink to Black Hole
 
 
-// 2. Activate Magic Portal
+// 2. Block Unauthorized Communications
 
 
-// 3. Track Fairy Movements
+// 3. Activate Rescue Beacon
 
 
-// 4. Summon Fireflies
-
-
-// 5. Scroll through Ancient Scrolls
-
-
-// 6. Navigate through the Maze
-
-
-// 7. Detect Magical Creatures
-
+// 4. Retrieve Space Supplies

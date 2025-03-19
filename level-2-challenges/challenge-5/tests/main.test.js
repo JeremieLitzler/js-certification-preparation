@@ -6,85 +6,42 @@ beforeAll(async () => {
 })
 
 
-test('1. Prevent Hyperlink to Black Hole', async () => {
+test('1. Initiate the Launch Sequence', async () => {
   const consoleMock = vi.spyOn(console, 'log')
-  const blackHoleLink = document.querySelector('#blackHoleLink')
-  const event = new MouseEvent('click', {
-    'bubbles': true,
-    'cancelable': true
-  })
-
-  blackHoleLink.dispatchEvent(event)
-  expect(event.defaultPrevented).toBe(true)
-  expect(consoleMock).toHaveBeenCalledWith('Black Hole avoided!')
-  consoleMock.mockRestore()
-})
-
-test('2. Block Unauthorized Communications', async () => {
-  const communicationForm = document.querySelector('#communicationForm')
-  const event = new Event('submit', {
-    'bubbles': true,
-    'cancelable': true
-  })
-
-  const consoleMock = vi.spyOn(console, 'log')
-
-  communicationForm.dispatchEvent(event)
-  expect(event.defaultPrevented).toBe(true)
-  expect(consoleMock).toHaveBeenCalledWith('Unauthorized communication blocked!')
-
+  const launchButton = document.querySelector('#launchButton')
+  const rocket = document.querySelector('.rocket')
+  launchButton.click()
+  expect(rocket.classList.contains('launch')).toBeTruthy()
   consoleMock.mockRestore()
 })
 
 
-test('3. Activate Rescue Beacon', async () => {
-  const rescueBeaconButton = document.querySelector('#rescueBeaconButton')
-  const buttonEvent = new MouseEvent('click', {
-    'bubbles': true,
-    'cancelable': true
-  })
-  const documentEvent = new MouseEvent('click', {
-    'bubbles': true,
-    'cancelable': true
-  })
-
+test('2. Monitor the Control Input', async () => {
   const consoleMock = vi.spyOn(console, 'log')
-
-  rescueBeaconButton.dispatchEvent(buttonEvent)
-  expect(consoleMock).toBeCalledTimes(1)
-  expect(consoleMock).toHaveBeenCalledWith('Rescue beacon activated!')
-
-  document.dispatchEvent(documentEvent)
-  expect(consoleMock).toHaveBeenCalledWith('Rescue beacon deactivated!')
-
+  const controlInput = document.querySelector('#controlInput')
+  const event = new KeyboardEvent('keydown', { 'key': 'c' })
+  controlInput.dispatchEvent(event)
+  expect(consoleMock).toHaveBeenCalledOnce()
+  expect(consoleMock).toHaveBeenCalledWith('c')
   consoleMock.mockRestore()
 })
 
-test('4. Retrieve Space Supplies', async () => {
-  const suppliesContainer = document.querySelector('#suppliesContainer')
-  expect(suppliesContainer.children.length).toBe(3)
-  const addSupplyButton = document.querySelector('#addSupplyButton')
-  addSupplyButton.click()
-  console.log(suppliesContainer.children.length)
-  expect(suppliesContainer.children.length).toBe(4)
-  expect(suppliesContainer.children.item(3).textContent).toBe('Supply 4')
+
+test('3. Track the Mouse Coordinates', async () => {
+  const star = document.querySelector('.star')
+  const event = new MouseEvent('mousemove', {
+    'clientX': 100,
+    'clientY': 200
+  })
+  document.dispatchEvent(event)
+  expect(star.style.left).toBe('100px')
+  expect(star.style.top).toBe('200px')
 })
 
-test('4. Retrieve Space Supplies', async () => {
-  const suppliesContainer = document.querySelector('#suppliesContainer')
-  const span = document.createElement('span')
-  span.textContent = 'Supply Test'
-  suppliesContainer.appendChild(span)
 
-  const event = new MouseEvent('click', {
-    'bubbles': true,
-    'cancelable': true
-  })
-
-  const consoleMock = vi.spyOn(console, 'log')
-
-  span.dispatchEvent(event)
-  expect(consoleMock).toHaveBeenCalledWith('Supply Test')
-
-  consoleMock.mockRestore()
+test('4. Activate the Hyperdrive', async () => {
+  const hyperdriveButton = document.querySelector('#hyperdriveButton')
+  const event = new MouseEvent('dblclick')
+  hyperdriveButton.dispatchEvent(event)
+  expect(document.body.classList.contains('hyperdrive')).toBeTruthy()
 })

@@ -1,48 +1,53 @@
 ---
 difficulty: 2
-tags: JavaScript, Error Handling
-chapter: "Chapter 8: Error Handling"
-training: true
+tags: Coding Challenge, ES6 Features
+chapter: "Chapter 7: ES6+ Features"
 ---
 
-# Error Hunter: Error Handling Challenge
+# Harmony Hub:  ES6+ Syntax Challenge
 
 ## Challenge Description
 
-Welcome to "Code Adventure"! As a shrewd code detective, your mission is to uncover the hidden "error goblins" in a series of seemingly normal function calls. These goblins are cunningly concealed within parameters and operations, ready to wreak havoc on our code world at any moment. You need to employ your error handling skills to root out these goblins and maintain peace in the code kingdom!
+Welcome to Harmony Hub, a cutting-edge digital music studio! As a newly hired JavaScript audio engineer, you need to use modern JavaScript features to create various audio processing and music production functions.
 
-Complete all tasks in `/src/main.js` to become the most outstanding error hunter!
+Complete all tasks in `/src/main.js` to become Harmony Hub's star audio programmer!
 
 ## Requirements
 
-1. Syntax Trap:
+1. Track Metadata Formatter:
 
-   - Refine the `parseMagicSpell` function.
-   - This function accepts a string parameter representing a magic spell.
-   - Some inputs may lead to syntax issues. Identify and handle these situations.
-   - Return the parsed spell object on success, and return the error object on failure.
+   - Implement the `formatTrackMetadata` function that accepts a title, artist, and a variable number of genres as parameters.
+   - Return a formatted html string containing all provided information.
+   - Expect: 
 
-2. Range Maze:
+      ```html
+            <div class="track-title">Bohemian Rhapsody</div>
+            <div class="track-artist">Queen</div>
+            <div class="track-genres">Rock, Progressive Rock, Opera Rock</div>
+      ```
 
-   - Refine the `createMagicArray` function.
-   - The function receives a single parameter: the length of the magic array to be created.
-   - Attempt to create an array of the specified length. Certain lengths might trigger range-related errors.
-   - Return the created array on success, and return the error object on failure.
+2. Playlist Creator:
 
-3. Reference Enigma:
+   - Implement the `createPlaylist` function that accepts an existing playlist array and any number of new track IDs.
+   - Return a new array containing all existing and newly added tracks.
 
-   - Refine the `castSpell` function.
-   - The function accepts spell name and target as parameters.
-   - Some input combinations may result in reference issues. Identify and elegantly handle these situations.
-   - Return the spell-casting effect on success, and return the error object on failure.
+3. Audio Effect Merger:
 
-## What to Expect
+   - Implement the `mergeAudioEffects` function that accepts a default effects object and a custom effects object.
+   - Return a new object merging properties from both input objects, prioritizing values from the custom effects.
 
-You should have the following logged to the console.
+4. Mix Assignment:
 
+   - Implement the `assignMixParameters` function that accepts a mix parameters object containing volume, pan.
+   - Return a new object with all properties from the input object and add a default 'isMuted' property set to false.
 
-```
-SyntaxError: Expected double-quoted property name in JSON at position 34 (line 1 column 35)
-RangeError: Invalid array length
-TypeError: spells[spellName] is not a function
-```
+5. Instrument Tuning Check:
+
+   - Implement the `checkInstrumentTuning` function that accepts a tuning object and an instrument name.
+   - Return the tuning frequency for the specified instrument, defaulting to 440 if not present.
+
+## Expected Output
+
+After completing the challenge, you will see Harmony Hub's Digital Audio Workstation interface:
+
+![Harmony Hub DAW Screenshot](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/7-1/harmony-hub.jpg)

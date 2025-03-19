@@ -1,36 +1,40 @@
 // You do not need to focus on and modify the content of this file
 
-export function renderTrackMetadata (htmlStr) {
-  document.querySelector('#trackMetadata').innerHTML = htmlStr
-}
-
-export function renderPlaylist (playlist) {
-  const container = document.querySelector('#playlistTracks')
-  playlist.forEach((item) => {
-    const el = document.createElement('li')
-    el.textContent = item
-    container.appendChild(el)
+export function renderPetPetAttributes (attributes) {
+  const attributesEle = document.querySelector('#attributes')
+  attributes.forEach((attr) => {
+    const el = document.createElement('span')
+    el.textContent = attr
+    attributesEle.appendChild(el)
   })
 }
 
-export function renderAudioEffects (effects) {
-  const reverbEl = document.querySelector('#reverb')
-  const delayEl = document.querySelector('#delay')
-  const chorusEl = document.querySelector('#chorus')
-  reverbEl.value = effects.reverb
-  delayEl.value = effects.delay
-  chorusEl.value = effects.chorus
+export function renderPetHealthIndex (value) {
+  const healthValue = document.querySelector('#healthIndex')
+  healthValue.textContent = value
 }
 
-export function renderMixParameters (params) {
-  const volumeEl = document.querySelector('#volume')
-  const panEl = document.querySelector('#pan')
-  volumeEl.value = params.volume
-  panEl.value = params.pan
+export function renderSkillList (skills) {
+  const skillContainer = document.querySelector('#skillList')
+  for (const skill in skills) {
+    const el = document.createElement('li')
+    el.textContent = skill
+    skillContainer.appendChild(el)
+  }
 }
 
+export function renderPetProtectionStatus (pet) {
+  const el = document.querySelector('#protectionStatus')
+  const status = Object.isFrozen(pet)
+    ? 'Protected'
+    : 'Unprotected'
+  el.textContent = status
+}
 
-export function renderInstrumentTuning (value) {
-  const tunerEl = document.querySelector('#tuner')
-  tunerEl.textContent = value
+export function renderBlazeAbilityExist (pet) {
+  const el = document.querySelector('#abilityName')
+  const status = Object.isFrozen(pet)
+    ? 'True'
+    : 'False'
+  el.textContent = status
 }

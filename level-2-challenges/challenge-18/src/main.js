@@ -1,35 +1,25 @@
-import { logMessage, getRandomApiUrl } from '../utils/helpers'
+const GET_COMMENTS_API_ENDPOINT = '/comments'
+const POST_COMMENTS_API_ENDPOINT = '/comments/post'
+const COMMENTS_CONTAINER_ID = 'commentsContainer'
+const COMMENTS_SUBMIT_ID = 'submitBtn'
 
-const setupConnectButton = () => {
-  // Your code goes here
+export const fetchData = (api) => {
+
 }
 
-const setupLaunchButton = () => {
-  // Your code goes here
+const createCommentElement = (data) => {
+
 }
 
-const setupAbortButton = () => {
-  // Your code goes here
+const renderComment = (comment) => {
+
 }
 
+const postComment = () => {
+
+}
 
 export const main = () => {
-  const navContainer = document.querySelector('#app')
-  navContainer.innerHTML = `
-    <div class="controls">
-      <button id="connect">Connect to Major Tom</button>
-      <button id="launch">Initiate Launch</button>
-      <button id="abort">Abort Mission</button>
-    </div>
-
-    <div class="logs">
-      <h2>Mission Logs:</h2>
-      <ul id="log-list"></ul>
-    </div>
-  `
-
-
-  setupConnectButton()
-  setupLaunchButton()
-  setupAbortButton()
+  // Excute your code here
 }
+

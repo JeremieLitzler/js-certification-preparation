@@ -5,67 +5,78 @@ chapter: "Chapter 3: Events"
 training: true
 ---
 
-# Enchanted Forest Game: Common UI Events
+# Interstellar Rescue: Event Bubbling Challenge
 
 ## Challenge Description
 
-In this challenge, you are a brave adventurer navigating through an enchanted forest filled with magical creatures and ancient artifacts. Use your JavaScript event handling skills to complete various tasks!
+In this challenge, you'll embark on an interstellar rescue using JavaScript events skills. Your mission is to save stranded astronauts and navigate through cosmic anomalies.
 
-Complete all tasks in `/src/main.js` and demonstrate your proficiency in handling various JavaScript events.
+Complete all tasks in `/src/main.js` and prove your prowess as an Interstellar Rescuer!
 
 ## Requirements
 
-1. Avoid the Enchanted Spider:
+1. Prevent Hyperlink to Black Hole:
 
-- Find a `div` with `id="spiderWeb"` on the page.
-- When the mouse hovers over this `div`, add the class `spider-web` to the element.
-- When the mouse leaves this `div`, remove the class `spider-web` to the element.
-- When the class is added you should see a spider web spider-web on the page.
+- Find the anchor tag with `id="blackHoleLink"`.
+- Bind a click event to the anchor tag.
+- When the link is clicked, prevent the page navigation and log "Black Hole avoided!".
 
-![screenshot of solution](https://github.com/JavaScript-Certification/images/blob/main/images/training/3-3/spider.gif?raw=true)
+2. Block Unauthorized Communications:
 
-2. Activate Magic Portal:
+- Find the form with `id="communicationForm"`.
+- Bind a submit event to the form.
+- When the form is submitted, prevent the default submission and log the message "Unauthorized communication blocked!".
 
-- Find a form with `id="magicPortalForm"` on the page.
-- When the Enter key is pressed, log "Magic Portal activated!" and prevent the form's default submission behavior.
 
-3. Track Fairy Movements:
+3. Activate Rescue Beacon:
 
-- When the pointer is moved while holding down the `Ctrl` key, set the top and left position of the element with the class `fairy` to the event `clientX` and `clientY` properties so that the fairy svg image follows the mouse around.
+- Find the button with `id="rescueBeaconButton"`.
+- Bind a click event to the button.
+- When the button is clicked, log "Rescue beacon activated!".
+- Also, bind a click event to the document that logs "Rescue beacon deactivated!".
+- Ensure that clicking the button does not trigger the document's click event.
 
-> 💡 HINT: The `clientX` and `clientY` props are provided as numbers while the style `top` and `left` expect a value that includes the unit `px`
+4. Retrieve Space Supplies:
 
-![screenshot of solution](https://github.com/JavaScript-Certification/images/blob/main/images/training/3-3/fairy.gif?raw=true)
+- Bind click events to all child `span` elements within the `id="suppliesContainer"` using event delegation.
+- When a supply item (`<span>` element) is clicked, log the text content of the clicked item.
+- Ensure that clicking on the supply item does not trigger any parent element's event.
+- Bind click event to the button element with `id="addSupplyButton"` and add a new supply item to the `suppliesContainer` when clicked.
+  - The new supply item should be a `<span>` element with the text content "Supply {index}(Order index)".
+  - The new supply item should also can be clicked to log its text content.
+  - **Note**: Instead of binding click events for newly added Supply each time you click the `id="addSupplyButton` button, use the event delegation approach to better bind events for dynamically added elements.
 
-4. Summon Fireflies:
+## What to Expect
 
-- Find a button with `id="fireflyButton"` on the page.
-- When the button is pressed, add the class `firefly` to the button.
-- When the button is released, remove the class `firefly` to the button.
+1. Prevent Hyperlink to Black Hole:
 
-![screenshot of solution](https://github.com/JavaScript-Certification/images/blob/main/images/training/3-3/firefly.gif?raw=true)
+  Prevent page navigating
 
-5. Scroll through Ancient Scrolls:
+```plaintext
+Output: Black Hole avoided!
+```
 
-- Find a container with `id="scrollContainer"` on the page.
-- When the container is scrolled, update the `top` property of the element with the class="tiger" to the container's `scrollTop` value.
+2. Block Unauthorized Communications:
 
-![screenshot of solution](https://github.com/JavaScript-Certification/images/blob/main/images/training/3-3/tiger.gif?raw=true)
+  Prevent form submission
 
-6. Navigate through the Maze:
+```plaintext
+Output: Unauthorized communication blocked!
+```
 
-- When the arrow keys are pressed, move the explorer's position by 10px in the corresponding direction using the `top` and `left` properties of the element with the `class="explorer"`.
 
-  - `ArrowUp`: Add 10px to the `top` property.
-  - `ArrowDown`: Subtract 10px from the `top` property.
-  - `ArrowLeft`: Subtract 10px from the `left` property.
-  - `ArrowRight`: Add 10px to the `left` property.
+3. Activate Rescue Beacon:
 
-![screenshot of solution](https://github.com/JavaScript-Certification/images/blob/main/images/training/3-3/explorer.gif?raw=true)
+```plaintext
+Output: Rescue beacon activated!
+Output: Rescue beacon deactivated!  (only when clicking outside the rescue beacon button)
+```
 
-7. Detect Magical Creatures:
+4. Retrieve Space Supplies:
 
-- Find an area with `id="creatureDetector"` on the page.
-- When the pointer enters this area, log "Magical creature detected!".
-- When the pointer leaves this area, log "Magical creature left!".
-- Ensure that entering or leaving any child elements within this area also triggers the log messages.
+  Click the `addSupplyButton` button to add a new supply item.
+
+```plaintext
+Output: the text content of the clicked space supplies
+```
+

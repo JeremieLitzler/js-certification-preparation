@@ -1,56 +1,71 @@
-import { describe, it, expect, beforeAll } from 'vitest'
-console.log = () => {}
+import { describe, it, expect } from 'vitest'
+import {
+  formatTrackMetadata,
+  createPlaylist,
+  mergeAudioEffects,
+  assignMixParameters,
+  checkInstrumentTuning
+} from '../src/main'
 
-let mainModule
-
-describe('parseMagicSpell', () => {
-  beforeAll(async () => {
-    mainModule = await import('../src/main')
-  })
-  it('should correctly parse a valid JSON string', () => {
-    const result = mainModule.parseMagicSpell('{"spell": "fireball", "power": 10}')
-    expect(result).toEqual({ 'spell': 'fireball',
-      'power': 10 })
-  })
-
-  it('should handle an invalid JSON string', () => {
-    const error = mainModule.parseMagicSpell('{"spell": "fireball", "power": 10,}')
-    expect(error).toBeInstanceOf(Error)
-    expect(error.name).toBe('SyntaxError')
-    expect(error.message).toBe('Expected double-quoted property name in JSON at position 34')
+describe('formatTrackMetadata', () => {
+  it('should correctly format track metadata', () => {
+    const result = formatTrackMetadata('Test Title', 'Test Artist', 'Pop', 'Rock')
+    expect(result).toContain('<div class="track-title">Test Title</div>')
+    expect(result).toContain('<div class="track-artist">Test Artist</div>')
+    expect(result).toContain('<div class="track-genres">Pop,Rock</div>')
   })
 })
 
-describe('createMagicArray', () => {
-  it('should create an array of the specified length', () => {
-    const createMagicArray = mainModule.createMagicArray
-    const result = createMagicArray(5)
-    expect(result).toBeInstanceOf(Array)
-    expect(result.length).toBe(5)
-  })
-
-  it('should handle negative length', () => {
-    const createMagicArray = mainModule.createMagicArray
-    const error = createMagicArray(-1)
-    expect(error).toBeInstanceOf(Error)
-    expect(error.name).toBe('RangeError')
-    expect(error.message).toBe('Invalid array length')
+describe('createPlaylist', () => {
+  it('should correctly create a playlist', () => {
+    const existingPlaylist = [
+      'Song1',
+      'Song2'
+    ]
+    const newTracks = [
+      'Song3',
+      'Song4'
+    ]
+    const result = createPlaylist(existingPlaylist, ...newTracks)
+    expect(result).toEqual([
+      'Song1',
+      'Song2',
+      'Song3',
+      'Song4'
+    ])
   })
 })
 
-describe('castSpell', () => {
-  it('should correctly cast known spells', () => {
-    const castSpell = mainModule.castSpell
-    expect(castSpell('fireball', 'dragon')).toBe('Cast fireball at dragon')
-    expect(castSpell('heal', 'warrior')).toBe('Heal warrior')
-    expect(castSpell('shield', 'mage')).toBe('Apply shield to mage')
+describe('mergeAudioEffects', () => {
+  it('should correctly merge audio effects', () => {
+    const defaultEffects = { 'reverb': 0.5,
+      'delay': 0.3 }
+    const customEffects = { 'delay': 0.5,
+      'distortion': 0.2 }
+    const result = mergeAudioEffects(defaultEffects, customEffects)
+    expect(result).toEqual({ 'reverb': 0.5,
+      'delay': 0.5,
+      'distortion': 0.2 })
   })
+})
 
-  it('should handle unknown spells', () => {
-    const castSpell = mainModule.castSpell
-    const error = castSpell('invisibility', 'wizard')
-    expect(error).toBeInstanceOf(Error)
-    expect(error.name).toBe('TypeError')
-    expect(error.message).toBe('spells[spellName] is not a function')
+describe('assignMixParameters', () => {
+  it('should correctly assign mix parameters', () => {
+    const mixParams = { 'volume': 0.8,
+      'pan': -0.2 }
+    const result = assignMixParameters(mixParams)
+    expect(result).toEqual({ 'volume': 0.8,
+      'pan': -0.2,
+      'isMuted': false })
+  })
+})
+
+describe('checkInstrumentTuning', () => {
+  it('should return the correct tuning frequency', () => {
+    const tuningObject = { 'violin': 442,
+      'piano': 440 }
+    expect(checkInstrumentTuning(tuningObject, 'violin')).toBe(442)
+    expect(checkInstrumentTuning(tuningObject, 'piano')).toBe(440)
+    expect(checkInstrumentTuning(tuningObject, 'guitar')).toBe(440) // default value
   })
 })

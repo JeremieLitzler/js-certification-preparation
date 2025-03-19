@@ -1,68 +1,192 @@
-import { expect, describe, it } from 'vitest'
+import { expect, vi, describe, it } from 'vitest'
 import {
-  createStarCounter
+  analyzeEvidence,
+  createSkillEnhancer,
+  trackMovements,
+  composeTechniques,
+  filterSuspects
 } from '../src/main.js'
 
-function sleep (seconds) {
-  return new Promise((resolve) => setTimeout(resolve, seconds))
+
+describe('analyzeEvidence', () => {
+  it('should not use Array.prototype.reduce', () => {
+    const reduceSpy = vi.spyOn(Array.prototype, 'reduce')
+    const evidence = [
+      2,
+      4,
+      6,
+      8
+    ]
+    analyzeEvidence(evidence, (acc, val) => acc + val, 0)
+    expect(reduceSpy).not.toHaveBeenCalled()
+    reduceSpy.mockRestore()
+  })
+  it('should return the total evidence', () => {
+    const evidence = [
+      2,
+      4,
+      6,
+      8
+    ]
+    const totalEvidence = analyzeEvidence(evidence, (acc, val) => acc + val, 0)
+    expect(totalEvidence).toBe(20)
+  })
+
+  it('should return the total evidence', () => {
+    const evidence = [
+      1,
+      2,
+      3,
+      4
+    ]
+    const totalEvidence = analyzeEvidence(evidence, (acc, val) => acc + val, 0)
+    expect(totalEvidence).toBe(10)
+  })
+  it('should return the total evidence', () => {
+    const evidence = [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+    const totalEvidence = analyzeEvidence(evidence, (acc, val) => acc * val, 2)
+    expect(totalEvidence).toBe(240)
+  })
+})
+
+
+describe('createSkillEnhancer', () => {
+  it('should return a function that multiplies the power by n', () => {
+    const doubleSkill = createSkillEnhancer(2)
+    expect(doubleSkill(5)).toBe(10)
+  })
+  it('should return a function that multiplies the power by n', () => {
+    const tripleSkill = createSkillEnhancer(3)
+    expect(tripleSkill(5)).toBe(15)
+  })
+  it('should return a function that multiplies the power by n', () => {
+    const quadrupleSkill = createSkillEnhancer(4)
+    expect(quadrupleSkill(8)).toBe(32)
+  })
+})
+
+
+function sleep (timeout) {
+  return new Promise((resolve) => setTimeout(resolve, timeout))
 }
 
-describe('1. Star Counter', () => {
-  it('should initialize with the given initial value', () => {
-    const starCounter = createStarCounter(3)
-    expect(starCounter.getValue()).toBe(3)
-  })
-
-  it('should increment the value', () => {
-    const starCounter = createStarCounter(3)
-    starCounter.increment()
-    expect(starCounter.getValue()).toBe(4)
-  })
-
-  it('should decrement the value', () => {
-    const starCounter = createStarCounter(3)
-    starCounter.decrement()
-    expect(starCounter.getValue()).toBe(2)
-  })
-
-  it('should not decrement below 0', () => {
-    const starCounter = createStarCounter(0)
-    starCounter.decrement()
-    expect(starCounter.getValue()).toBe(-1)
+describe('trackMovements', () => {
+  it('should return the total distance', async () => {
+    let total = 0
+    const movements = [
+      2,
+      4,
+      6,
+      8
+    ]
+    trackMovements(movements, (count) => {
+      total += count
+    })
+    await sleep(210)
+    expect(total).toBe(6)
+    await sleep(210)
+    expect(total).toBe(12)
+    await sleep(110)
+    expect(total).toBe(12)
+    await sleep(100)
+    expect(total).toBe(20)
   })
 })
 
-describe('2. Cosmic Signal Broadcaster', async () => {
-  it('should broadcast signals correctly', async () => {
-    const signals = document.querySelector('#signalBroadcaster')
-    await sleep(110)
-    expect(signals.classList).toContain('signal-1')
-    expect(signals.classList).not.toContain('signal-2')
-    await sleep(110)
-    expect(signals.classList).toContain('signal-2')
-    expect(signals.classList).not.toContain('signal-1')
-    await sleep(110)
-    expect(signals.classList).toContain('signal-3')
-    expect(signals.classList).not.toContain('signal-2')
-    await sleep(110)
-    expect(signals.classList).toContain('signal-4')
-    expect(signals.classList).not.toContain('signal-3')
-    await sleep(110)
-    expect(signals.classList).toContain('signal-5')
-    expect(signals.classList).not.toContain('signal-4')
+describe('composeTechniques', () => {
+  it('should return the result of the composed functions', () => {
+    const double = (n) => n * 2
+    const square = (n) => n * n
+    const composed = composeTechniques(double, square)
+    expect(composed(5)).toBe(50)
+  })
+  it('should return the result of the composed functions', () => {
+    const triple = (n) => n * 3
+    const cube = (n) => n * n * n
+    const composed = composeTechniques(triple, cube)
+    expect(composed(5)).toBe(375)
+  })
+  it('should return the result of the composed functions', () => {
+    const quadruple = (n) => n * 4
+    const fourth = (n) => n * n * n * n
+    const composed = composeTechniques(quadruple, fourth)
+    expect(composed(5)).toBe(2500)
   })
 })
 
 
-describe('3. Cosmic Adjuster', () => {
-  it('should add the specified number of rockets, planets, and airships', () => {
-    const rockets = document.querySelector('#rockets')
-    const planets = document.querySelector('#planets')
-    const airships = document.querySelector('#airships')
+describe('filterSuspects', () => {
+  it('should return the filtered suspects', () => {
+    const creatures = [
+      'Vampire',
+      'Werewolf',
+      'Zombie',
+      'Ghost',
+      'Witch'
+    ]
+    const isMonster = (creature) => [
+      'Vampire',
+      'Werewolf',
+      'Zombie'
+    ].includes(creature)
+    const suspects = filterSuspects(creatures, isMonster)
+    expect(suspects).toEqual([
+      'Vampire',
+      'Werewolf',
+      'Zombie'
+    ])
+  })
+  it('should return the filtered suspects', () => {
+    const creatures = [
+      'Vampire',
+      'Werewolf',
+      'Zombie',
+      'Ghost',
+      'Witch'
+    ]
+    const isMonster = (creature) => [
+      'Ghost',
+      'Witch'
+    ].includes(creature)
+    const suspects = filterSuspects(creatures, isMonster)
+    expect(suspects).toEqual([
+      'Ghost',
+      'Witch'
+    ])
+  })
+  it('should return the filtered suspects', () => {
+    const creatures = [
+      'Vampire',
+      'Werewolf',
+      'Zombie',
+      'Ghost',
+      'Witch'
+    ]
+    const isMonster = (creature) => [
+      'Vampire',
+      'Zombie'
+    ].includes(creature)
+    const suspects = filterSuspects(creatures, isMonster)
+    expect(suspects).toEqual([
+      'Vampire',
+      'Zombie'
+    ])
+  })
 
-
-    expect(rockets.children.length).toBe(6)
-    expect(planets.children.length).toBe(5)
-    expect(airships.children.length).toBe(4)
+  it('should not use Array.prototype.filter', () => {
+    const filterSpy = vi.spyOn(Array.prototype, 'filter')
+    filterSuspects([
+      1,
+      2,
+      3
+    ], (val) => val > 1)
+    expect(filterSpy).not.toHaveBeenCalled()
+    filterSpy.mockRestore()
   })
 })

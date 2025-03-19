@@ -1,40 +1,47 @@
 // You do not need to focus on and modify the content of this file
 
-export function renderPetPetAttributes (attributes) {
-  const attributesEle = document.querySelector('#attributes')
-  attributes.forEach((attr) => {
-    const el = document.createElement('span')
-    el.textContent = attr
-    attributesEle.appendChild(el)
-  })
+function createPokemonCard (pokemon) {
+  return `
+    <div class="pokemon-card">
+        <h3>${pokemon.name}</h3>
+        <p>Type: ${pokemon.type}</p>
+        <p>Level: ${pokemon.level}</p>
+        <p>Power: ${pokemon.power}</p>
+        <p>Rarity: ${pokemon.rarity}</p>
+        <p>DiscoveredAt: ${new Date(pokemon.discoveredAt).toLocaleString()}</p>
+    </div>
+  `
 }
 
-export function renderPetHealthIndex (value) {
-  const healthValue = document.querySelector('#healthIndex')
-  healthValue.textContent = value
+export function displayTeamOverview (pokemonData, teamPower, isReady) {
+  document.getElementById('teamOverview').innerHTML = `
+      <p><strong>Team Total Power:</strong> ${teamPower}</p>
+      <p><strong>Championship Ready:</strong> ${isReady
+    ? 'Ready!'
+    : 'More training needed'}</p>
+      <p><strong>Team Size:</strong> ${pokemonData.length}</p>
+  `
 }
 
-export function renderSkillList (skills) {
-  const skillContainer = document.querySelector('#skillList')
-  for (const skill in skills) {
-    const el = document.createElement('li')
-    el.textContent = skill
-    skillContainer.appendChild(el)
-  }
+export function displayPokedex (updatedPokedex) {
+  const pokedexHtml = updatedPokedex.slice(0, 2).map(createPokemonCard).
+    join('')
+  document.getElementById('pokedex').innerHTML = pokedexHtml
 }
 
-export function renderPetProtectionStatus (pet) {
-  const el = document.querySelector('#protectionStatus')
-  const status = Object.isFrozen(pet)
-    ? 'Protected'
-    : 'Unprotected'
-  el.textContent = status
-}
-
-export function renderBlazeAbilityExist (pet) {
-  const el = document.querySelector('#abilityName')
-  const status = Object.isFrozen(pet)
-    ? 'True'
-    : 'False'
-  el.textContent = status
+export function displayChallengeResults (fireType, rarePokemon) {
+  document.getElementById('challengeResults').innerHTML = `
+      <div class="result-card">
+          <h3>Type Filter Results (Fire)</h3>
+          <pre>${JSON.stringify(fireType, null, 2)}</pre>
+      </div>
+      <div class="result-card">
+          <h3>Rare Pokemon</h3>
+          <pre>${JSON.stringify(rarePokemon, null, 2)}</pre>
+      </div>
+      <div class="result-card">
+          <h3>Evolution Results</h3>
+          <p>All Pokemon: Level +1, Power +10</p>
+      </div>
+  `
 }

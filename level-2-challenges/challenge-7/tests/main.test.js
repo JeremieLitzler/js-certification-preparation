@@ -1,192 +1,130 @@
-import { expect, vi, describe, it } from 'vitest'
-import {
-  analyzeEvidence,
-  createSkillEnhancer,
-  trackMovements,
-  composeTechniques,
-  filterSuspects
-} from '../src/main.js'
+import { expect, test, vi, beforeAll } from 'vitest'
 
 
-describe('analyzeEvidence', () => {
-  it('should not use Array.prototype.reduce', () => {
-    const reduceSpy = vi.spyOn(Array.prototype, 'reduce')
-    const evidence = [
-      2,
-      4,
-      6,
-      8
-    ]
-    analyzeEvidence(evidence, (acc, val) => acc + val, 0)
-    expect(reduceSpy).not.toHaveBeenCalled()
-    reduceSpy.mockRestore()
-  })
-  it('should return the total evidence', () => {
-    const evidence = [
-      2,
-      4,
-      6,
-      8
-    ]
-    const totalEvidence = analyzeEvidence(evidence, (acc, val) => acc + val, 0)
-    expect(totalEvidence).toBe(20)
-  })
-
-  it('should return the total evidence', () => {
-    const evidence = [
-      1,
-      2,
-      3,
-      4
-    ]
-    const totalEvidence = analyzeEvidence(evidence, (acc, val) => acc + val, 0)
-    expect(totalEvidence).toBe(10)
-  })
-  it('should return the total evidence', () => {
-    const evidence = [
-      1,
-      2,
-      3,
-      4,
-      5
-    ]
-    const totalEvidence = analyzeEvidence(evidence, (acc, val) => acc * val, 2)
-    expect(totalEvidence).toBe(240)
-  })
+beforeAll(async () => {
+  await import('../src/main.js')
 })
 
 
-describe('createSkillEnhancer', () => {
-  it('should return a function that multiplies the power by n', () => {
-    const doubleSkill = createSkillEnhancer(2)
-    expect(doubleSkill(5)).toBe(10)
-  })
-  it('should return a function that multiplies the power by n', () => {
-    const tripleSkill = createSkillEnhancer(3)
-    expect(tripleSkill(5)).toBe(15)
-  })
-  it('should return a function that multiplies the power by n', () => {
-    const quadrupleSkill = createSkillEnhancer(4)
-    expect(quadrupleSkill(8)).toBe(32)
-  })
+test('1. Avoid the Enchanted Spider', async () => {
+  const spiderWeb = document.querySelector('#spiderWeb')
+  const event = new MouseEvent('mouseenter', { 'bubbles': true })
+  const event2 = new MouseEvent('mouseover', { 'bubbles': true })
+  spiderWeb.dispatchEvent(event)
+  spiderWeb.dispatchEvent(event2)
+  expect(spiderWeb.classList.contains('spider-web')).toBeTruthy()
 })
 
 
-function sleep (timeout) {
-  return new Promise((resolve) => setTimeout(resolve, timeout))
-}
-
-describe('trackMovements', () => {
-  it('should return the total distance', async () => {
-    let total = 0
-    const movements = [
-      2,
-      4,
-      6,
-      8
-    ]
-    trackMovements(movements, (count) => {
-      total += count
-    })
-    await sleep(210)
-    expect(total).toBe(6)
-    await sleep(210)
-    expect(total).toBe(12)
-    await sleep(110)
-    expect(total).toBe(12)
-    await sleep(100)
-    expect(total).toBe(20)
-  })
+test('1. Avoid the Enchanted Spider', async () => {
+  const spiderWeb = document.querySelector('#spiderWeb')
+  const event = new MouseEvent('mouseleave', { 'bubbles': true })
+  const event2 = new MouseEvent('mouseout', { 'bubbles': true })
+  spiderWeb.dispatchEvent(event)
+  spiderWeb.dispatchEvent(event2)
+  expect(spiderWeb.classList.contains('spider-web')).toBeFalsy()
 })
 
-describe('composeTechniques', () => {
-  it('should return the result of the composed functions', () => {
-    const double = (n) => n * 2
-    const square = (n) => n * n
-    const composed = composeTechniques(double, square)
-    expect(composed(5)).toBe(50)
-  })
-  it('should return the result of the composed functions', () => {
-    const triple = (n) => n * 3
-    const cube = (n) => n * n * n
-    const composed = composeTechniques(triple, cube)
-    expect(composed(5)).toBe(375)
-  })
-  it('should return the result of the composed functions', () => {
-    const quadruple = (n) => n * 4
-    const fourth = (n) => n * n * n * n
-    const composed = composeTechniques(quadruple, fourth)
-    expect(composed(5)).toBe(2500)
-  })
+test('2. Activate Magic Portal', async () => {
+  const spy = vi.spyOn(console, 'log')
+  const magicPortalForm = document.querySelector('#magicPortalForm')
+  const event = new KeyboardEvent('keydown', { 'key': 'Enter',
+    'bubbles': true })
+  magicPortalForm.dispatchEvent(event)
+  expect(spy).toHaveBeenCalledWith('Magic Portal activated!')
+  spy.mockRestore()
 })
 
+test('3. Track Fairy Movements', async () => {
+  const fairy = document.querySelector('.fairy')
+  const event = new MouseEvent('mousemove', {
+    'clientX': 100,
+    'clientY': 200
+  })
+  document.dispatchEvent(event)
+  expect(fairy.style.left).not.toBe('100px')
+  expect(fairy.style.top).not.toBe('200px')
+})
 
-describe('filterSuspects', () => {
-  it('should return the filtered suspects', () => {
-    const creatures = [
-      'Vampire',
-      'Werewolf',
-      'Zombie',
-      'Ghost',
-      'Witch'
-    ]
-    const isMonster = (creature) => [
-      'Vampire',
-      'Werewolf',
-      'Zombie'
-    ].includes(creature)
-    const suspects = filterSuspects(creatures, isMonster)
-    expect(suspects).toEqual([
-      'Vampire',
-      'Werewolf',
-      'Zombie'
-    ])
+test('3. Track Fairy Movements', async () => {
+  const fairy = document.querySelector('.fairy')
+  const event = new MouseEvent('mousemove', {
+    'clientX': 200,
+    'clientY': 400,
+    'ctrlKey': true
   })
-  it('should return the filtered suspects', () => {
-    const creatures = [
-      'Vampire',
-      'Werewolf',
-      'Zombie',
-      'Ghost',
-      'Witch'
-    ]
-    const isMonster = (creature) => [
-      'Ghost',
-      'Witch'
-    ].includes(creature)
-    const suspects = filterSuspects(creatures, isMonster)
-    expect(suspects).toEqual([
-      'Ghost',
-      'Witch'
-    ])
-  })
-  it('should return the filtered suspects', () => {
-    const creatures = [
-      'Vampire',
-      'Werewolf',
-      'Zombie',
-      'Ghost',
-      'Witch'
-    ]
-    const isMonster = (creature) => [
-      'Vampire',
-      'Zombie'
-    ].includes(creature)
-    const suspects = filterSuspects(creatures, isMonster)
-    expect(suspects).toEqual([
-      'Vampire',
-      'Zombie'
-    ])
-  })
+  document.dispatchEvent(event)
+  expect(fairy.style.left).toBe('200px')
+  expect(fairy.style.top).toBe('400px')
+})
 
-  it('should not use Array.prototype.filter', () => {
-    const filterSpy = vi.spyOn(Array.prototype, 'filter')
-    filterSuspects([
-      1,
-      2,
-      3
-    ], (val) => val > 1)
-    expect(filterSpy).not.toHaveBeenCalled()
-    filterSpy.mockRestore()
-  })
+test('4. Summon Fireflies', async () => {
+  const fireflyButton = document.querySelector('#fireflyButton')
+  const event = new MouseEvent('mousedown', { 'bubbles': true })
+  fireflyButton.dispatchEvent(event)
+  expect(fireflyButton.classList.contains('firefly')).toBeTruthy()
+})
+
+test('4. Summon Fireflies', async () => {
+  const fireflyButton = document.querySelector('#fireflyButton')
+  const event = new MouseEvent('mouseup', { 'bubbles': true })
+  fireflyButton.dispatchEvent(event)
+  expect(fireflyButton.classList.contains('firefly')).toBeFalsy()
+})
+
+test('5. Scroll through Ancient Scrolls', async () => {
+  const scrollContainer = document.querySelector('#scrollContainer')
+  const tiger = document.querySelector('.tiger')
+  scrollContainer.scrollTop = 50
+  const event = new Event('scroll', { 'bubbles': true })
+  scrollContainer.dispatchEvent(event)
+  expect(tiger.style.top).toBe('50px')
+})
+
+test('6. Navigate through the Maze', async () => {
+  const explorer = document.querySelector('.explorer')
+  const directions = {
+    'ArrowDown':
+    { 'top': 10,
+      'left': 0 },
+    'ArrowRight':
+    { 'top': 10,
+      'left': 10 },
+    'ArrowLeft':
+    { 'top': 10,
+      'left': 0 },
+    'ArrowUp':
+     { 'top': 0,
+       'left': 0 }
+  }
+  const spy = vi.spyOn(console, 'log')
+  for (const [
+    key,
+    value
+  ] of Object.entries(directions)) {
+    const event = new KeyboardEvent('keydown', { key,
+      'bubbles': true })
+    document.dispatchEvent(event)
+    expect(explorer.style.top).toBe(`${value.top}px`)
+    expect(explorer.style.left).toBe(`${value.left}px`)
+  }
+  spy.mockRestore()
+})
+
+test('7. Detect Magical Creatures', async () => {
+  const creatureDetector = document.querySelector('#creatureDetector')
+  const spy = vi.spyOn(console, 'log')
+  const event = new MouseEvent('mouseover', { 'bubbles': true })
+  creatureDetector.dispatchEvent(event)
+  expect(spy).toHaveBeenCalledWith('Magical creature detected!')
+  spy.mockRestore()
+})
+
+test('7. Detect Magical Creatures', async () => {
+  const creatureDetector = document.querySelector('#creatureDetector')
+  const spy = vi.spyOn(console, 'log')
+  const event = new MouseEvent('mouseout', { 'bubbles': true })
+  creatureDetector.dispatchEvent(event)
+  expect(spy).toHaveBeenCalledWith('Magical creature left!')
+  spy.mockRestore()
 })
