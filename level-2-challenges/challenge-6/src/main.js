@@ -27,7 +27,7 @@ document.addEventListener('click', () => {
 // 4. Retrieve Space Supplies
 class SuppliesContainer {
   constructor(elem) {
-    this._elem = elem;
+    this._container = elem;
     elem.onclick = this.onClick.bind(this);
   }
 
@@ -44,14 +44,14 @@ class SuppliesContainer {
   }
 
   _currentStock() {
-    return this._elem.children.length;
+    return this._container.children.length;
   }
 
   addNewSupply() {
     let stockCount = this._currentStock();
     const newSupply = document.createElement('span');
     newSupply.textContent = `Supply ${++stockCount}`;
-    this._elem.append(newSupply);
+    this._container.append(newSupply);
   }
 }
 const suppliesContainerInstance = new SuppliesContainer(suppliesContainer);
