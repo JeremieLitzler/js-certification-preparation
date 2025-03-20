@@ -16,6 +16,9 @@ export async function fetchAllProducts() {
 
 export async function fetchAllProductsV2() {
   const res = await fetch(BASE_API);
+  if (!res.ok) {
+    throw new Error(`${res.statusText} (status: ${res.status})`);
+  }
   return res.json();
 }
 
