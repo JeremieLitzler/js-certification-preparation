@@ -1,7 +1,7 @@
 ---
 difficulty: 2
 tags: Coding Challenge, Object Methods
-chapter: "Chapter 6: Advanced Array and Object Methods"
+chapter: 'Chapter 6: Advanced Array and Object Methods'
 training: true
 ---
 
@@ -43,10 +43,3 @@ Complete all tasks in `/src/main.js` to become the best digital pet caretaker!
    - Implement the `checkSpecialAbility` function that accepts a pet object and an ability name.
    - Check if the pet directly has the specified special ability (not including inherited properties).
    - Return a boolean indicating whether the pet has that special ability.
-
-
-## What to Expect
-
- The pet cards displayed as expected:
-
-![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/6-2/pet-card.jpg)
