@@ -5,24 +5,22 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ground Control to Major Tom</title>
-  <style>
-    body {
-      background: #0B0C15;
-    }
-  </style>
+  <title>Timer App</title>
 </head>
 
 <body>
-  <ul id="nav" class="top-nav"></ul>
   <div id="app">
-    <h1 class="exercise-title">Ground Control to Major Tom</h1>
+    <div class="container">
+      <h1 class="title">Timer App</h1>
+      <div id="timer" class="time"></div>
+      <div class="btn-wrapper">
+        <button id="start" class="start">Start</button>
+        <button id="pause" class="pause hidden">Pause</button>
+        <button id="reset" class="reset">Reset</button>
+      </div>
   </div>
-  <script type="module">
-    import './src/style.css';
-    import { main } from './src/main.js';
-    main()
-  </script>
+</div>
+  <script type="module" src="/index.js"></script>
 </body>
 
 </html>

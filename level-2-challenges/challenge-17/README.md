@@ -1,49 +1,37 @@
 ---
 difficulty: 2
-tags: codechallenge, training, JavaScript
-chapter: "Chapter 9: Challenge Roundup"
+tags: JavaScript, Error Handling
+chapter: 'Chapter 8: Error Handling'
 training: true
 ---
 
-# Timer App: Dom Manipulation and Intervals
+# Error Hunter: Error Handling Challenge
 
-# Challenge Description
+## Challenge Description
 
-In this challenge, you are tasked with creating a timer application.
+Welcome to "Code Adventure"! As a shrewd code detective, your mission is to uncover the hidden "error goblins" in a series of seemingly normal function calls. These goblins are cunningly concealed within parameters and operations, ready to wreak havoc on our code world at any moment. You need to employ your error handling skills to root out these goblins and maintain peace in the code kingdom!
 
-The challenge will require that you work in `src/main.js`.
+Complete all tasks in `/src/main.js` to become the most outstanding error hunter!
 
 ## Requirements
 
-- Show time:
-  - The timer must display time in the `ss` format (e.g., `05` for 5 seconds and `20` for 20 seconds).
-  - The timer's initial value should be `00`.
-  - Display the initial value in the `id=timer` element's `textContent`.
+1. Syntax Trap:
 
-> 💡 HINT: You can use the `padStart` function to prepend a zero to the `seconds` value if it is less than 10.
-> [Read Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)
+   - Refine the `parseMagicSpell` function.
+   - This function accepts a string parameter representing a magic spell.
+   - Some inputs may lead to syntax issues. Identify and handle these situations.
+   - Return the parsed spell object on success, and return the error object on failure.
 
-- When the start button (`id=start`) is clicked:
-  - Start the timer and update the `id=timer` element's `textContent` every second.
-  - Hide the start button (`id=start`).
-  - Show the pause button (`id=pause`).
+2. Range Maze:
 
-> 💡 HINT: You can use the `setInterval` function to update the timer every second.
-> [Read Docs](https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval)
+   - Refine the `createMagicArray` function.
+   - The function receives a single parameter: the length of the magic array to be created.
+   - Attempt to create an array of the specified length. Certain lengths might trigger range-related errors.
+   - Return the created array on success, and return the error object on failure.
 
-> 💡 HINT: You can add and remove the `hidden` class to toggle the display state of elements.
+3. Reference Enigma:
 
-- When the pause button (`id=pause`) is clicked:
-  - Pause the timer and stop updating the `id=timer` element's `textContent`.
-  - Show the start button (`id=start`).
-  - Hide the pause button (`id=pause`).
-
-> 💡 HINT: You can use the `clearInterval` function to stop the timer.
-> [Read Docs](https://developer.mozilla.org/en-US/docs/Web/API/Window/clearInterval)
-
-- When the reset button (`id=reset`) is clicked:
-  - reset the timer and update the `id=timer` element's `textContent`.
-  - Show the start button (`id=start`).
-  - Hide the pause button (`id=pause`).
-
-![Screenshot of the solution](https://api.certificates.dev/storage/js-l2-training-9-1-demo.gif)
+   - Refine the `castSpell` function.
+   - The function accepts spell name and target as parameters.
+   - Some input combinations may result in reference issues. Identify and elegantly handle these situations.
+   - Return the spell-casting effect on success, and return the error object on failure.

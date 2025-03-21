@@ -1,11 +1,9 @@
-- Initialize the `seconds` value to `0` and display `00` in the `id=timer` element.
-- Prepend a zero to the timer if the `seconds` value is less than 10.
-- When the start button (`id=start`) is clicked, start the timer and update the `id=timer` element's text content every second.
-- Hide the start button (`id=start`) when the timer is running.
-- Show the pause button (`id=pause`) when the timer is running.
-- When the pause button (`id=pause`) is clicked, pause the timer.
-- Show the start button (`id=start`) when the timer is paused.
-- Hide the pause button (`id=pause`) when the timer is paused.
-- When the reset button (`id=reset`) is clicked, reset the `seconds` value to `0` and update the `id=timer` element's text content to `00`.
-- Show the start button (`id=start`) when the timer is reset.
-- Hide the pause button (`id=pause`) when the timer is reset.
+## What to Expect
+
+You should have the following logged to the console.
+
+```
+SyntaxError: Expected double-quoted property name in JSON at position 34 (line 1 column 35)
+RangeError: Invalid array length
+TypeError: spells[spellName] is not a function
+```

@@ -5,42 +5,45 @@ chapter: "Chapter 9: Challenge Roundup"
 training: true
 ---
 
-# Ground Control to Major Tom
+# Timer App: Dom Manipulation and Intervals
 
-## Challenge Description
+# Challenge Description
 
-You’re part of the mission control team, and it’s your job to manage spacecraft systems and communicate with Major Tom during his journey. Implement the required functionality to ensure the mission is a success.
+In this challenge, you are tasked with creating a timer application.
+
+The challenge will require that you work in `src/main.js`.
 
 ## Requirements
 
-- Connect to Major Tom:
+- Show time:
+  - The timer must display time in the `ss` format (e.g., `05` for 5 seconds and `20` for 20 seconds).
+  - The timer's initial value should be `00`.
+  - Display the initial value in the `id=timer` element's `textContent`.
 
-  - When the button with `id="connect"` is clicked:
-    - Trigger a fetch request to connect to Major Tom using the API URL from the `getApiUrl()` function.
-    - Use the predefined `logMessage` function and pass the string `'connectStart'`.
-    - If the fetch response status is `500`, call the `logMessage` function with `'connectFail'`.
-    - If the fetch response status is `200`, call the `logMessage` function with `'connectSuccess'`.
+> 💡 HINT: You can use the `padStart` function to prepend a zero to the `seconds` value if it is less than 10.
+> [Read Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)
 
-- Initiate Launch Sequence:
-
-  - When the button with `id="launch"` is clicked:
-    - If no prior successful connection established:
-      - Call the `logMessage` function with `'notConnected'`.
-    - If connected:
-      - Call the `logMessage` function with `'launchStart'`.
-      - Perform a countdown (from 3 to 1) every second:
-        - Call the `logMessage` function every second during the countdown, passing `'launchCountdown'` as the first argument and the current countdown number as the second.
-        - After the countdown, call the `logMessage` function with `'launchSuccess'`.
+- When the start button (`id=start`) is clicked:
+  - Start the timer and update the `id=timer` element's `textContent` every second.
+  - Hide the start button (`id=start`).
+  - Show the pause button (`id=pause`).
 
 > 💡 HINT: You can use the `setInterval` function to update the timer every second.
 > [Read Docs](https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval)
 
-- Abort Mission:
+> 💡 HINT: You can add and remove the `hidden` class to toggle the display state of elements.
 
-  - When the button with `id="abort"` is clicked:
-    - If clicked during an active launch countdown:
-      - Stop the countdown.
-      - Call the `logMessage` function with `'abortSuccess'`.
-    - If no countdown is active, call the `logMessage` function with `'abortFail'`.
+- When the pause button (`id=pause`) is clicked:
+  - Pause the timer and stop updating the `id=timer` element's `textContent`.
+  - Show the start button (`id=start`).
+  - Hide the pause button (`id=pause`).
 
-![Screenshot](https://api.certificates.dev/storage/js-l2-training-9-3.gif)
+> 💡 HINT: You can use the `clearInterval` function to stop the timer.
+> [Read Docs](https://developer.mozilla.org/en-US/docs/Web/API/Window/clearInterval)
+
+- When the reset button (`id=reset`) is clicked:
+  - reset the timer and update the `id=timer` element's `textContent`.
+  - Show the start button (`id=start`).
+  - Hide the pause button (`id=pause`).
+
+![Screenshot of the solution](https://api.certificates.dev/storage/js-l2-training-9-1-demo.gif)

@@ -1,107 +1,41 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect } from 'vitest'
 import { main } from '../src/main'
+const TIMER_EL_ID = 'timer'
+const START_BTN_ID = 'start'
+const PAUSE_BTN_ID = 'pause'
+const RESET_BTN_ID = 'reset'
 
-describe('The challenge', () => {
-  beforeEach(() => {
-    document.body.innerHTML = '<div id="app"></div>'
+async function sleep (ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+describe('Timer App', () => {
+  it('should work', async () => {
     main()
-  })
-
-  it('should show not connected message if launch is attempted without connection', () => {
-    const launchButton = document.getElementById('launch')
-    launchButton.click()
-
-    const logItems = document.querySelectorAll('#log-list li')
-    expect(logItems[0].textContent).toBe('Connection to Major Tom is required.')
-  })
-
-  it('should connect to Major Tom successfully', async () => {
-    global.fetch = vi.fn(() => Promise.resolve({
-      'json': () => Promise.resolve({ 'status': 200 })
-    }))
-
-    const connectButton = document.getElementById('connect')
-    connectButton.click()
-
-    await new Promise((resolve) => setTimeout(resolve, 0))
-
-    const logItems = document.querySelectorAll('#log-list li')
-    expect(logItems[0].textContent).toBe('Attempting to connect to Major Tom...')
-    expect(logItems[1].textContent).toBe('Connection established with Major Tom.')
-  })
-
-  it('should fail to connect to Major Tom', async () => {
-    global.fetch = vi.fn(() => Promise.resolve({
-      'json': () => Promise.resolve({ 'status': 500 })
-    }))
-
-    const connectButton = document.getElementById('connect')
-    connectButton.click()
-
-    await new Promise((resolve) => setTimeout(resolve, 0))
-
-    const logItems = document.querySelectorAll('#log-list li')
-    expect(logItems[0].textContent).toBe('Attempting to connect to Major Tom...')
-    expect(logItems[1].textContent).toBe('Connection failed!')
-  })
-
-
-  it('should initiate launch sequence and complete countdown', () => {
-    vi.useFakeTimers()
-    global.fetch = vi.fn(() => Promise.resolve({
-      'json': () => Promise.resolve({ 'status': 200 })
-    }))
-
-    const connectButton = document.getElementById('connect')
-    connectButton.click()
-
-    vi.advanceTimersByTime(1000)
-
-    const launchButton = document.getElementById('launch')
-    launchButton.click()
-
-    const logItems = document.querySelectorAll('#log-list li')
-    expect(logItems[1].textContent).toBe('Initiating launch sequence...')
-
-    for (let i = 3; i > 0; i--) {
-      vi.advanceTimersByTime(1000)
-      expect(document.querySelector('#log-list').innerHTML).toContain(`T-minus ${i}`)
-    }
-
-    vi.advanceTimersByTime(1000)
-    expect(document.querySelector('#log-list').innerHTML).toContain('Launch Successful! Major Tom is in orbit.')
-    vi.useRealTimers()
-  })
-
-  it('should abort mission during countdown', () => {
-    vi.useFakeTimers()
-    global.fetch = vi.fn(() => Promise.resolve({
-      'json': () => Promise.resolve({ 'status': 200 })
-    }))
-
-    const connectButton = document.getElementById('connect')
-    connectButton.click()
-
-    vi.advanceTimersByTime(1000)
-
-    const launchButton = document.getElementById('launch')
-    launchButton.click()
-
-    vi.advanceTimersByTime(5000)
-
-    const abortButton = document.getElementById('abort')
-    abortButton.click()
-
-    const logItems = document.querySelectorAll('#log-list li')
-    expect(logItems[logItems.length - 1].textContent).toBe('Mission aborted! Major Tom is safe.')
-    vi.useRealTimers()
-  })
-
-  it('should fail to abort mission if no active mission', () => {
-    const abortButton = document.getElementById('abort')
-    abortButton.click()
-
-    const logItems = document.querySelectorAll('#log-list li')
-    expect(logItems[0].textContent).toBe('No active mission to abort.')
+    const timerElement = document.querySelector(`#${TIMER_EL_ID}`)
+    const startButton = document.querySelector(`#${START_BTN_ID}`)
+    const pauseButton = document.querySelector(`#${PAUSE_BTN_ID}`)
+    const resetButton = document.querySelector(`#${RESET_BTN_ID}`)
+    expect(timerElement.textContent).toBe('00')
+    startButton.click()
+    await sleep(1100)
+    expect(startButton.classList.contains('hidden')).toBe(true)
+    expect(timerElement.textContent).toBe('01')
+    await sleep(2100)
+    expect(timerElement.textContent).toBe('03')
+    pauseButton.click()
+    await sleep(1100)
+    expect(startButton.classList.contains('hidden')).toBe(false)
+    expect(pauseButton.classList.contains('hidden')).toBe(true)
+    expect(timerElement.textContent).toBe('03')
+    resetButton.click()
+    expect(startButton.classList.contains('hidden')).toBe(false)
+    expect(pauseButton.classList.contains('hidden')).toBe(true)
+    expect(timerElement.textContent).toBe('00')
+    startButton.click()
+    await sleep(2100)
+    expect(startButton.classList.contains('hidden')).toBe(true)
+    expect(pauseButton.classList.contains('hidden')).toBe(false)
+    expect(timerElement.textContent).toBe('02')
   })
 })

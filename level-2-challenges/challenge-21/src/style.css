@@ -3,15 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --bg: #0B0C15;
-  --primary: #F041FF;
-  --secondary: #F7DF1F;
+  --bg: #0b0c15;
+  --primary: #f041ff;
+  --secondary: #f7df1f;
   --text: white;
 }
 
 body {
   background-color: var(--bg);
   color: var(--text);
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
 }
 
 .top-nav {
@@ -34,14 +37,12 @@ body {
 .home-nav {
   @apply flex flex-col justify-center list-none h-screen w-96 max-w-full mx-auto;
 }
-
 .home-nav li,
 .home-nav a {
   @apply block text-center;
 }
-
 .exercise-title {
-  @apply text-3xl font-bold text-center my-10;
+  @apply text-3xl font-bold mb-6 text-center;
 }
 
 .article-wrapper {
@@ -72,55 +73,34 @@ body {
 .score-container {
   @apply text-3xl text-center p-8;
 }
-
 .add-function-wrapper {
   @apply text-center;
 }
 
-#task-input {
-  @apply px-4 py-2 rounded text-black;
+.controls button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #1e90ff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-#priority-select {
-  @apply px-4 py-2 rounded text-black ml-2;
+.controls button:hover {
+  background-color: #1c86ee;
 }
 
-#add-task-btn {
-  @apply px-4 py-2 rounded bg-green-500 text-white ml-2;
+.logs {
+  margin-top: 20px;
 }
 
-#task-list li {
-  @apply flex justify-between items-center p-4 mb-2 rounded-lg text-gray-800 gap-2;
+#log-list {
+  list-style-type: none;
+  padding: 0;
 }
 
-#task-list li.priority-low {
-  background-color: #d1fad2; /* Green for low priority */
-}
-
-#task-list li.priority-medium {
-  background-color: #fef3c7; /* Yellow for medium priority */
-}
-
-#task-list li.priority-high {
-  background-color: #fecaca; /* Red for high priority */
-}
-
-#task-list li span {
-  @apply w-1/2 text-left
-}
-
-#task-list li .priority-label {
-  @apply px-2 py-1 rounded text-sm bg-gray-700 text-white max-w-20 text-center;
-}
-
-.delete-btn {
-  @apply px-2 py-1 rounded bg-red-500 text-white;
-}
-
-.filter-sort-wrapper {
-  @apply my-4;
-}
-
-.filter-sort-wrapper select {
-  @apply px-4 py-2 rounded text-black ml-2;
+#log-list li {
+  margin: 5px 0;
 }

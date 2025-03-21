@@ -4,76 +4,90 @@
 
 
 body {
-  @apply w-screen h-screen flex flex-col justify-center items-center;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-#app {
-  @apply w-[420px] mx-auto bg-white rounded-lg shadow-md max-h-[600px];
+.container {
+    max-width: 450px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-.title {
-  @apply rounded-tl-xl rounded-tr-xl px-2 text-2xl font-bold text-center h-[64px] leading-[64px] bg-blue-500 text-white;
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
 }
 
-.wrapper {
-  @apply bg-white rounded-lg shadow-md overflow-y-auto mb-4 h-[536px];
+.panel {
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-left: 5px solid #3498db;
+    transition: all 0.3s ease;
 }
 
-
-.detail-container img {
-  @apply w-full h-64 object-cover;
+.panel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-.detail-container p {
-  @apply text-base text-gray-700 p-2 indent-2;
+.panel h2 {
+    color: #3498db;
+    margin-top: 0;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
 }
 
-.comments-title {
-  @apply text-xl font-bold mb-4 p-2;
-}
-.comments-container {
-  @apply p-2
-}
-
-.comments-container > div {
-  @apply flex items-start space-x-4;
-}
-
-.comments-container > div img {
-  @apply w-12 h-12 rounded-full;
+.call {
+    background-color: #e9ecef;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-family: monospace;
+    font-size: 14px;
+    overflow-x: auto;
 }
 
-.comments-container > div > div h3 {
-  @apply text-lg font-semibold;
+.result, .error {
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
 }
 
-.comments-container > div > div p {
-  @apply text-gray-600;
+.result {
+    background-color: #d4edda;
+    color: #155724;
 }
 
-#addCommentForm {
-  @apply p-2;
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
 }
 
-#addCommentForm > div {
-  @apply mb-2;
+.icon {
+    font-size: 20px;
+    margin-right: 10px;
 }
 
-#addCommentForm > div label {
-  @apply block text-sm font-semibold;
+.emoji {
+    font-size: 24px;
+    margin-right: 10px;
 }
-
-#addCommentForm > div input, #addCommentForm > div textarea {
-  @apply w-full p-2 border border-gray-300 rounded-md;
-}
-
-#addCommentForm > button {
-  @apply w-full p-2 bg-blue-500 text-white rounded-md;
-}
-
-#addCommentForm > button:hover {
-  @apply bg-blue-600;
-}
-
-
-

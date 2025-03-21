@@ -1,48 +1,49 @@
 ---
 difficulty: 2
-tags: JavaScript, Error Handling
-chapter: "Chapter 8: Error Handling"
-training: true
+tags: Coding Challenge, Modules
+chapter: "Chapter 7: ES6+ Features"
 ---
 
-# Error Hunter: Error Handling Challenge
+# Module Mage: Modules Challenge
 
 ## Challenge Description
 
-Welcome to "Code Adventure"! As a shrewd code detective, your mission is to uncover the hidden "error goblins" in a series of seemingly normal function calls. These goblins are cunningly concealed within parameters and operations, ready to wreak havoc on our code world at any moment. You need to employ your error handling skills to root out these goblins and maintain peace in the code kingdom!
+Welcome to the Module Mage Academy! As a newly enrolled magic apprentice, you need to use modern JavaScript module magic to create various magical spells and enchanted items.
 
-Complete all tasks in `/src/main.js` to become the most outstanding error hunter!
+Complete all tasks in `/src/spells.js` to become the brightest new star at the Module Mage Academy!
 
 ## Requirements
 
-1. Syntax Trap:
+1. Basic Spell Exports:
 
-   - Refine the `parseMagicSpell` function.
-   - This function accepts a string parameter representing a magic spell.
-   - Some inputs may lead to syntax issues. Identify and handle these situations.
-   - Return the parsed spell object on success, and return the error object on failure.
+   - Create and export the following basic spell functions in `src/1-spells.js`:
+     - `fireball`: returns "🔥 Fireball!"
+     - `frostNova`: returns "❄️ Frost Nova!"
+   - Import and use these spells in `src/main.js`
 
-2. Range Maze:
+2. Magic Item Aliases:
 
-   - Refine the `createMagicArray` function.
-   - The function receives a single parameter: the length of the magic array to be created.
-   - Attempt to create an array of the specified length. Certain lengths might trigger range-related errors.
-   - Return the created array on success, and return the error object on failure.
+   - Export magic item objects in `src/2-items.js`
+   - In `src/main.js`, import `magicWand` as `wizardStaff` using an alias
 
-3. Reference Enigma:
+3. Default Wizard:
 
-   - Refine the `castSpell` function.
-   - The function accepts spell name and target as parameters.
-   - Some input combinations may result in reference issues. Identify and elegantly handle these situations.
-   - Return the spell-casting effect on success, and return the error object on failure.
+   - Create and default export a wizard object in `src/3-wizard.js`
+   - Import this wizard in `src/main.js`
 
-## What to Expect
+4. Dynamic Spellbook:
 
-You should have the following logged to the console.
+   - Export all objects in the `/src/4-spellbooks/` directory
+   - Implement the `loadSpellBook` function that dynamically imports the corresponding module based on the spellbook name passed in
+   - Spellbook modules are located in the `/src/4-spellbooks/` directory
 
+5. Magic Aggregation:
 
-```
-SyntaxError: Expected double-quoted property name in JSON at position 34 (line 1 column 35)
-RangeError: Invalid array length
-TypeError: spells[spellName] is not a function
-```
+   - Implement `src/magic.js` file that re-exports all contents from `src/1-spells.js` and `src/2-items.js`
+   - Use a single import statement in `src/main.js` to get all magical content
+
+## Expected Output
+
+After completing the challenge, you will see the Module Mage Academy's magical page:
+
+![Module Mage Screenshot](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/7-2/module-mage.jpg)

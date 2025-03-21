@@ -1,9 +1,11 @@
-- Ensure the "Connect to Major Tom" button initiates a connection attempt and logs "Attempting to connect to Major Tom...".
-- Verify that a successful connection logs "Connection established with Major Tom.".
-- Verify that a failed connection logs "Connection failed!".
-- Ensure the "Initiate Launch" button logs "Connection to Major Tom is required." if not connected.
-- Verify that the "Initiate Launch" button logs "Initiating launch sequence..." when connected.
-- Check that the countdown from 10 to 1 is logged correctly with "T-minus X".
-- Verify that "Launch Successful! Major Tom is in orbit." is logged after the countdown completes.
-- Ensure the "Abort Mission" button logs "Mission aborted! Major Tom is safe." if clicked during the countdown.
-- Verify that the "Abort Mission" button logs "No active mission to abort." if no countdown is active.
+- Initialize the `seconds` value to `0` and display `00` in the `id=timer` element.
+- Prepend a zero to the timer if the `seconds` value is less than 10.
+- When the start button (`id=start`) is clicked, start the timer and update the `id=timer` element's text content every second.
+- Hide the start button (`id=start`) when the timer is running.
+- Show the pause button (`id=pause`) when the timer is running.
+- When the pause button (`id=pause`) is clicked, pause the timer.
+- Show the start button (`id=start`) when the timer is paused.
+- Hide the pause button (`id=pause`) when the timer is paused.
+- When the reset button (`id=reset`) is clicked, reset the `seconds` value to `0` and update the `id=timer` element's text content to `00`.
+- Show the start button (`id=start`) when the timer is reset.
+- Hide the pause button (`id=pause`) when the timer is reset.

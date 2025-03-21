@@ -5,79 +5,42 @@ chapter: "Chapter 9: Challenge Roundup"
 training: true
 ---
 
-# Task Manager with Filtering and Sorting
+# Ground Control to Major Tom
 
-# Challenge Description
+## Challenge Description
 
-Your task is to build a **Task Manager** application that allows users to:
-- Add tasks with a priority level (Low, Medium, High).
-- Filter tasks by priority.
-- Sort tasks by priority or creation time.
-- Delete tasks.
+You’re part of the mission control team, and it’s your job to manage spacecraft systems and communicate with Major Tom during his journey. Implement the required functionality to ensure the mission is a success.
 
 ## Requirements
 
-1. **Add Task Functionality**
-   - Users should be able to input a task in a text field.
-   - Every task should have the following properties:
-     - `id`: A unique identifier (use `Date.now()` to generate a timestamp-based ID).
-     - `task`: The task description (the value entered in the input field).
-     - `priority`: The priority level (Low, Medium, High) selected from the dropdown.
-     - `createdAt`: The creation time of the task (use `new Date()` to capture the current time).
-   - Users should type the task name in the `id="task-input"` input element.
-   - Users should select a priority level (Low, Medium, High) from the `id="priority-select"` select element.
-   - When the `id="add-task-btn"` button is clicked:
-     - If the task name is empty or just spaces, do nothing.
-     - Otherwise:
-       - Create a new task object with the properties mentioned above.
-       - Add the task to a `tasks` global array.
-       - Render the updated task list by calling the `renderTasks()` function.
-       - Empty the task input field after adding the task.
+- Connect to Major Tom:
 
-2. **Dynamic Rendering**
-   - Use the provided `createTaskElement(task)` function to generate the HTML structure for each task.
-   - The `createTaskElement(task)` function returns an `<li>` element with the following structure:
-   - Use this function in the `renderTasks()` function to dynamically render the task list inside the `id="task-list"` element.
+  - When the button with `id="connect"` is clicked:
+    - Trigger a fetch request to connect to Major Tom using the API URL from the `getApiUrl()` function.
+    - Use the predefined `logMessage` function and pass the string `'connectStart'`.
+    - If the fetch response status is `500`, call the `logMessage` function with `'connectFail'`.
+    - If the fetch response status is `200`, call the `logMessage` function with `'connectSuccess'`.
 
-3. **Filter Functionality**
-   - Listen to the `'change'` event in `id="filter-select"` select element.
-   - When the filter value changes:
-     - Filter the `tasks` based on the selected priority.
-     - Render the filtered tasks by calling the `renderTasks()` function.
-   - The filter options are:
-     - `All`: Show all tasks.
-     - `Low`: Show only tasks with "low" priority.
-     - `Medium`: Show only tasks with "medium" priority.
-     - `High`: Show only tasks with "high" priority.
+- Initiate Launch Sequence:
 
-> 💡 HINT: You can use the `Array.prototype.filter()` method to filter the tasks based on the selected option.
-> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+  - When the button with `id="launch"` is clicked:
+    - If no prior successful connection established:
+      - Call the `logMessage` function with `'notConnected'`.
+    - If connected:
+      - Call the `logMessage` function with `'launchStart'`.
+      - Perform a countdown (from 3 to 1) every second:
+        - Call the `logMessage` function every second during the countdown, passing `'launchCountdown'` as the first argument and the current countdown number as the second.
+        - After the countdown, call the `logMessage` function with `'launchSuccess'`.
 
-4. **Sort Functionality**
-   - Listen to the `'change'` event in the `id="sort-select"` select element.
-   - When the sort value changes:
-     - Sort the `tasks` based on the selected option.
-     - Render the sorted tasks by calling the `renderTasks()` function.
-   - The sort options are:
-     - `priority`: Sort tasks by priority (high > medium > low).
-     - `time`: Sort tasks by creation time (newest first).
+> 💡 HINT: You can use the `setInterval` function to update the timer every second.
+> [Read Docs](https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval)
 
-> 💡 HINT: You can use the `Array.prototype.sort()` method to sort the tasks based on the selected option.
-> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+- Abort Mission:
 
-5. **Delete Functionality**
-   - Each task created by `createTaskElement` should have a `.delete-btn` button.
-   - Listen to the `'click'` event on the `.delete-btn` buttons when a new task is rendered.
-   - When the "Delete" button is clicked:
-     - Complete the `deleteTask()` function to:
-       - Remove the task from the `tasks` array using the task's `id`.
-       - Render the updated task list by calling the `renderTasks()` function.
+  - When the button with `id="abort"` is clicked:
+    - If clicked during an active launch countdown:
+      - Stop the countdown.
+      - Call the `logMessage` function with `'abortSuccess'`.
+    - If no countdown is active, call the `logMessage` function with `'abortFail'`.
 
-> 💡 HINT: Each "Delete" button has a `data-id` attribute that stores the unique `id` of the task it belongs to.
-> You can retrieve this `id` using `parseInt(deleteBtn.getAttribute('data-id'))`.
-
-![Screenshot of the solution](https://api.certificates.dev/storage/demo.gif)
-
-## Other Considerations
-
-- All exported functions and variables must remain exported as they are essential for our tests.
+![Screenshot](https://api.certificates.dev/storage/js-l2-training-9-3.gif)

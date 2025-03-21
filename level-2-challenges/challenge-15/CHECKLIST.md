@@ -1,1 +1,1 @@
-- The console displays the expected output
+- The arcane academy displayed as expected

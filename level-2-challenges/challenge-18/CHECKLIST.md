@@ -1,2 +1,1 @@
-- Fetch article comments from `/comments` API endpoint.
-- Render comments to the DOM as expected.
+- The harmony hub displayed as expected

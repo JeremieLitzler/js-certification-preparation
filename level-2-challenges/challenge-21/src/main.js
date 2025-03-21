@@ -1,45 +1,35 @@
-export let tasks = []
+import { logMessage, getRandomApiUrl } from '../utils/helpers'
 
-export function addTask (task, priority) {
-  // Add a new task and render the updated list
+const setupConnectButton = () => {
+  // Your code goes here
 }
 
-export function deleteTask (taskId) {
-  // Remove the task with the given ID and render the updated list
+const setupLaunchButton = () => {
+  // Your code goes here
 }
 
-export function filterTasks (priority) {
-  // return filtered tasks
+const setupAbortButton = () => {
+  // Your code goes here
 }
 
-export function sortTasks (tasks, sortBy) {
-  // return sorted tasks
-}
 
-// Expects a task object
-export function createTaskElement (task) {
-  const li = document.createElement('li')
+export const main = () => {
+  const navContainer = document.querySelector('#app')
+  navContainer.innerHTML = `
+    <div class="controls">
+      <button id="connect">Connect to Major Tom</button>
+      <button id="launch">Initiate Launch</button>
+      <button id="abort">Abort Mission</button>
+    </div>
 
-  li.className = `priority-${task.priority}`
-  li.innerHTML = `
-    <span>${task.task}</span>
-    <span class="priority-label">${task.priority}</span>
-    <button class="delete-btn" data-id="${task.id}">Delete</button>
+    <div class="logs">
+      <h2>Mission Logs:</h2>
+      <ul id="log-list"></ul>
+    </div>
   `
-  return li
-}
 
-export function renderTasks () {
-  const taskList = document.getElementById('task-list')
-  const filterSelect = document.getElementById('filter-select')
-  const sortSelect = document.getElementById('sort-select')
-}
 
-export function main () {
-  const addTaskBtn = document.getElementById('add-task-btn')
-  const taskInput = document.getElementById('task-input')
-  const prioritySelect = document.getElementById('priority-select')
-  const filterSelect = document.getElementById('filter-select')
-  const sortSelect = document.getElementById('sort-select')
-  // Add event listeners and handle task addition, filtering, and sorting here
+  setupConnectButton()
+  setupLaunchButton()
+  setupAbortButton()
 }

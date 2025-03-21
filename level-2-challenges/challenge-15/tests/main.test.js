@@ -1,56 +1,60 @@
-import { describe, it, expect, beforeAll } from 'vitest'
-console.log = () => {}
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+import { fireball, frostNova } from '../src/1-spells.js'
+import { magicWand as wizardStaff } from '../src/2-items.js'
+import defaultWizard from '../src/3-wizard.js'
+import { loadSpellBook } from '../src/main.js'
+import * as magic from '../src/5-magic.js'
 
-let mainModule
+describe('Module Mage: JavaScript Modules Challenge Tests', () => {
+  // 1. Basic Spell Exports
+  describe('Basic Spell Exports', () => {
+    it('should return the correct string for fireball', () => {
+      expect(fireball()).toBe('🔥 Fireball!')
+    })
 
-describe('parseMagicSpell', () => {
-  beforeAll(async () => {
-    mainModule = await import('../src/main')
-  })
-  it('should correctly parse a valid JSON string', () => {
-    const result = mainModule.parseMagicSpell('{"spell": "fireball", "power": 10}')
-    expect(result).toEqual({ 'spell': 'fireball',
-      'power': 10 })
-  })
-
-  it('should handle an invalid JSON string', () => {
-    const error = mainModule.parseMagicSpell('{"spell": "fireball", "power": 10,}')
-    expect(error).toBeInstanceOf(Error)
-    expect(error.name).toBe('SyntaxError')
-    expect(error.message).toBe('Expected double-quoted property name in JSON at position 34')
-  })
-})
-
-describe('createMagicArray', () => {
-  it('should create an array of the specified length', () => {
-    const createMagicArray = mainModule.createMagicArray
-    const result = createMagicArray(5)
-    expect(result).toBeInstanceOf(Array)
-    expect(result.length).toBe(5)
+    it('should return the correct string for frostNova', () => {
+      expect(frostNova()).toBe('❄️ Frost Nova!')
+    })
   })
 
-  it('should handle negative length', () => {
-    const createMagicArray = mainModule.createMagicArray
-    const error = createMagicArray(-1)
-    expect(error).toBeInstanceOf(Error)
-    expect(error.name).toBe('RangeError')
-    expect(error.message).toBe('Invalid array length')
-  })
-})
-
-describe('castSpell', () => {
-  it('should correctly cast known spells', () => {
-    const castSpell = mainModule.castSpell
-    expect(castSpell('fireball', 'dragon')).toBe('Cast fireball at dragon')
-    expect(castSpell('heal', 'warrior')).toBe('Heal warrior')
-    expect(castSpell('shield', 'mage')).toBe('Apply shield to mage')
+  // 2. Magic Item Aliases
+  describe('Magic Item Aliases', () => {
+    it('should correctly import magicWand as wizardStaff', () => {
+      expect(wizardStaff).toBeDefined()
+      // Assuming magicWand has a name property
+      expect(wizardStaff.name).toBe('Magic Wand')
+    })
   })
 
-  it('should handle unknown spells', () => {
-    const castSpell = mainModule.castSpell
-    const error = castSpell('invisibility', 'wizard')
-    expect(error).toBeInstanceOf(Error)
-    expect(error.name).toBe('TypeError')
-    expect(error.message).toBe('spells[spellName] is not a function')
+  // 3. Default Wizard
+  describe('Default Wizard Export', () => {
+    it('should correctly export the default wizard object', () => {
+      expect(defaultWizard).toBeDefined()
+      // Assuming the wizard object has a name property
+      expect(defaultWizard.name).toBeDefined()
+    })
+  })
+
+  // 4. Dynamic Spellbook
+  describe('Dynamic Spellbook Loading', () => {
+    it('should dynamically load a spellbook', async () => {
+      const spellBook = await loadSpellBook('fire')
+      expect(spellBook).toBeDefined()
+      // Assuming the fireSpells spellbook has an inferno spell
+      expect(spellBook.inferno).toBeDefined()
+    })
+
+    it('should handle non-existent spellbooks', async () => {
+      await expect(loadSpellBook('nonexistentBook')).rejects.toThrow()
+    })
+  })
+
+  // 5. Magic Aggregation
+  describe('Magic Aggregation', () => {
+    it('should export all spells and items', () => {
+      expect(magic.fireball).toBeDefined()
+      expect(magic.frostNova).toBeDefined()
+      expect(magic.magicWand).toBeDefined()
+    })
   })
 })

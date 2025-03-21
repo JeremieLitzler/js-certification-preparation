@@ -1,61 +1,57 @@
 ---
 difficulty: 2
-tags: codechallenge, training, JavaScript
-chapter: "Chapter 9: Challenge Roundup"
+tags: JavaScript, Error Handling
+chapter: "Chapter 8: Error Handling"
 training: true
 ---
 
-# Article Comments
+# Kitchen Safety Guardian: Custom Errors Challenge
 
-# Challenge Description
+## Challenge Description
 
-In this challenge, you are tasked with creating an article comments section.
+Welcome to "Precision Kitchen"! As a perfectionist chef, your task is to ensure that every critical aspect of the kitchen operates flawlessly. You need to identify different types of potential issues in key functions and actively throw appropriate types of errors. Demonstrate your programming skills and professional expertise through meticulous error handling!
 
-The challenge will require that you work in `src/main.js`.
+Complete all tasks in `/src/main.js` to become the most competent kitchen safety guardian!
 
 ## Requirements
 
-- Fetch the article comments from the `/comments` API endpoint.
+1. Temperature Controller:
 
-- Display the list of comments as follows:
+   - Refine the `setOvenTemperature` function.
+   - This function accepts a temperature parameter (in Celsius).
+   - If the temperature is not a number type, throw a TypeError with the message "Temperature must be a number".
+   - If the temperature is below 0 degrees or above 280 degrees, throw a RangeError with the message "Temperature out of valid range".
+   - In normal cases, return the message "Temperature set successfully".
+   - The `setOvenTemperature` function should work as expected with the following:
 
-  - Create a comment item element with the following structure:
-    - `div` container element to wrap all the elements.
-    - `img` element with the `src` attribute set to the comment's `avatar` data to display the user's avatar. Append it to the container `div` element.
-    - `div` (sub-container) element to wrap the user's name and comment content.
-      - `h3` element with the comment's `name` data to display the user's name. Append it to the sub-container `div` element.
-      - `p` element with the comment's `content` data to display the user's comment. Append it to the sub-container `div` element.
-    - Append the sub-container `div` element to the parent container `div` element.
-  - Append the comment item to the comments container element with `id="commentsContainer"`.
+   ![screenshot of requirement 1 solution](https://s3.amazonaws.com/images.certificates.dev/1-temperature-controller.png)
 
-> 💡 HINT: The HTML structure of the comment item should look like this:
->
-> ```html
-> <div>
->   <img src="avatar" />
->   <div>
->     <h3>Name</h3>
->     <p>content</p>
->   </div>
-> </div>
-> ```
 
-- Implement the functionality to post a new comment:
-  - When the `id="submitBtn"` button is clicked, the following steps should be executed:
-    - Create a new comment object with the following structure:
-      - `name`: The value of the `id="name"` element.
-      - `comment`: The value of the `id="comment"` element.
-    - Send a fetch request to the `/comments/post` API endpoint with:
-      - The request method set to `'POST'`.
-      - The request headers set to `'Content-Type': 'application/json'`.
-      - The request body set to the new comment data as a stringified object (e.g. `{ name, comment }`).
-    - The fetch request will return the newly added comment if successful. Render the new comment in the comments container `id="commentsContainer"`.
+2. Ingredient Inspector:
 
-> 💡 HINT: In real-world scenarios, it's essential to sanitize input values before storing them in the database to ensure data integrity and security.
-> This is not required for this challenge, but it's a good practice to keep in mind.
+   - Refine the `checkIngredientFreshness` function.
+   - This function accepts two parameters: ingredient name and shelf life (in days).
+   - If the ingredient name is not a string, throw a TypeError with the message "Ingredient name must be a string".
+   - If the shelf life is not an integer, throw a TypeError with the message "Shelf life must be an integer".
+   - If the ingredient name is an empty string, return a custom `EmptyIngredientError` with the name "EmptyIngredientError" and message "Ingredient name cannot be empty".
 
-![Screenshot of the solution](https://api.certificates.dev/storage/js-l2-training-9-2-demo.gif)
+      - 💡: You can create a custom error by extending `Error`
+      - 💡: Export `EmptyIngredientError` so that we can test it
 
-## Other Considerations
+   - In normal cases, return the message "[Ingredient name] is fresh and usable".
+   - The `checkIngredientFreshness` function should work as expected with the following:
 
-- The `fetchData()` and `main()` functions must remain exported as they are essential for our tests.
+   ![screenshot of requirement 2 solution](https://s3.amazonaws.com/images.certificates.dev/2-ingredient-inspector.png)
+
+3. Menu Planner:
+
+   - Refine the `addDishToMenu` function.
+   - This function accepts two parameters: dish name and price.
+   - If the dish name is not a string or is an empty string, throw a TypeError with the message "Invalid dish name".
+   - If the price is not a number or is negative, throw a TypeError with the message "Invalid price".
+   - If the dish name already exists in the menu, throw an Error with the message "Dish already exists in the menu".
+   - In normal cases, return the message "[Dish name] has been added to the menu".
+   - The `addDishToMenu` function should work as expected with the following:
+
+   ![screenshot of requirement 3 solution](https://s3.amazonaws.com/images.certificates.dev/3-menu-planner.png)
+

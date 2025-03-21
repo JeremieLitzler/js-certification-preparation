@@ -1,1 +1,0 @@
-- The harmony hub displayed as expected
