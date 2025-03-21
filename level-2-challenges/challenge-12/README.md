@@ -1,7 +1,7 @@
 ---
 difficulty: 2
 tags: Coding Challenge, training
-chapter: "Chapter 6: Advanced Array and Object Methods"
+chapter: 'Chapter 6: Advanced Array and Object Methods'
 training: true
 ---
 
@@ -49,9 +49,3 @@ Complete all tasks in `/src/main.js` to become the very best Pokémon trainer!
    - Implement the `readyForChampionship` function that accepts a Pokémon array.
    - Check if all Pokémon are at level 50 or above.
    - Return a boolean indicating whether the team is ready for the championship.
-
-## What to Expect
-
-The Pokémon training camp displayed as expected:
-
-![screenshot of solution](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/6-1/pokemon.jpg)
