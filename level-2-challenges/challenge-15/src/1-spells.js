@@ -1,8 +1,8 @@
 // 1. Basic spell exports
-function fireball () {
-  return '🔥 Fireball!'
+export function fireball() {
+  return '🔥 Fireball!';
 }
 
-function frostNova () {
-  return '❄️ Frost Nova!'
+export function frostNova() {
+  return '❄️ Frost Nova!';
 }

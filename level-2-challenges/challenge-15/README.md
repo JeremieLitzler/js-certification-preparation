@@ -1,7 +1,7 @@
 ---
 difficulty: 2
 tags: Coding Challenge, Modules
-chapter: "Chapter 7: ES6+ Features"
+chapter: 'Chapter 7: ES6+ Features'
 ---
 
 # Module Mage: Modules Challenge
@@ -41,9 +41,3 @@ Complete all tasks in `/src/spells.js` to become the brightest new star at the M
 
    - Implement `src/magic.js` file that re-exports all contents from `src/1-spells.js` and `src/2-items.js`
    - Use a single import statement in `src/main.js` to get all magical content
-
-## Expected Output
-
-After completing the challenge, you will see the Module Mage Academy's magical page:
-
-![Module Mage Screenshot](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/7-2/module-mage.jpg)
