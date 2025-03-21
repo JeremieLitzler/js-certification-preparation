@@ -32,7 +32,7 @@ export function filterByType(pokemonArray, type) {
 export function calculateTeamPower(pokemonArray) {
   const powersList = pokemonArray.map((pokemon) => pokemon.power);
   console.log('calculateTeamPower', powersList);
-  const result = powersList.reduce((next, sum) => sum + next, 0);
+  const result = pokemonArray.reduce((sum, next) => sum + next.power, 0);
   return result;
 }
 
