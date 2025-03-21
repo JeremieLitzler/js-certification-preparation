@@ -1,10 +1,10 @@
 ---
 difficulty: 2
 tags: Coding Challenge, ES6 Features
-chapter: "Chapter 7: ES6+ Features"
+chapter: 'Chapter 7: ES6+ Features'
 ---
 
-# Harmony Hub:  ES6+ Syntax Challenge
+# Harmony Hub: ES6+ Syntax Challenge
 
 ## Challenge Description
 
@@ -18,13 +18,13 @@ Complete all tasks in `/src/main.js` to become Harmony Hub's star audio programm
 
    - Implement the `formatTrackMetadata` function that accepts a title, artist, and a variable number of genres as parameters.
    - Return a formatted html string containing all provided information.
-   - Expect: 
+   - Expect:
 
-      ```html
-            <div class="track-title">Bohemian Rhapsody</div>
-            <div class="track-artist">Queen</div>
-            <div class="track-genres">Rock, Progressive Rock, Opera Rock</div>
-      ```
+     ```html
+     <div class="track-title">Bohemian Rhapsody</div>
+     <div class="track-artist">Queen</div>
+     <div class="track-genres">Rock, Progressive Rock, Opera Rock</div>
+     ```
 
 2. Playlist Creator:
 
@@ -45,9 +45,3 @@ Complete all tasks in `/src/main.js` to become Harmony Hub's star audio programm
 
    - Implement the `checkInstrumentTuning` function that accepts a tuning object and an instrument name.
    - Return the tuning frequency for the specified instrument, defaulting to 440 if not present.
-
-## Expected Output
-
-After completing the challenge, you will see Harmony Hub's Digital Audio Workstation interface:
-
-![Harmony Hub DAW Screenshot](https://raw.githubusercontent.com/JavaScript-Certification/images/refs/heads/main/images/training/7-1/harmony-hub.jpg)
