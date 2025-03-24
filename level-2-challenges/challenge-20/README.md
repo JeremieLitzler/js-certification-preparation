@@ -5,57 +5,42 @@ chapter: "Chapter 9: Challenge Roundup"
 training: true
 ---
 
-# Article Comments
+# Ground Control to Major Tom
 
-# Challenge Description
+## Challenge Description
 
-In this challenge, you are tasked with creating an article comments section.
-
-The challenge will require that you work in `src/main.js`.
+You’re part of the mission control team, and it’s your job to manage spacecraft systems and communicate with Major Tom during his journey. Implement the required functionality to ensure the mission is a success.
 
 ## Requirements
 
-- Fetch the article comments from the `/comments` API endpoint.
+- Connect to Major Tom:
 
-- Display the list of comments as follows:
+  - When the button with `id="connect"` is clicked:
+    - Trigger a fetch request to connect to Major Tom using the API URL from the `getApiUrl()` function.
+    - Use the predefined `logMessage` function and pass the string `'connectStart'`.
+    - If the fetch response status is `500`, call the `logMessage` function with `'connectFail'`.
+    - If the fetch response status is `200`, call the `logMessage` function with `'connectSuccess'`.
 
-  - Create a comment item element with the following structure:
-    - `div` container element to wrap all the elements.
-    - `img` element with the `src` attribute set to the comment's `avatar` data to display the user's avatar. Append it to the container `div` element.
-    - `div` (sub-container) element to wrap the user's name and comment content.
-      - `h3` element with the comment's `name` data to display the user's name. Append it to the sub-container `div` element.
-      - `p` element with the comment's `content` data to display the user's comment. Append it to the sub-container `div` element.
-    - Append the sub-container `div` element to the parent container `div` element.
-  - Append the comment item to the comments container element with `id="commentsContainer"`.
+- Initiate Launch Sequence:
 
-> 💡 HINT: The HTML structure of the comment item should look like this:
->
-> ```html
-> <div>
->   <img src="avatar" />
->   <div>
->     <h3>Name</h3>
->     <p>content</p>
->   </div>
-> </div>
-> ```
+  - When the button with `id="launch"` is clicked:
+    - If no prior successful connection established:
+      - Call the `logMessage` function with `'notConnected'`.
+    - If connected:
+      - Call the `logMessage` function with `'launchStart'`.
+      - Perform a countdown (from 3 to 1) every second:
+        - Call the `logMessage` function every second during the countdown, passing `'launchCountdown'` as the first argument and the current countdown number as the second.
+        - After the countdown, call the `logMessage` function with `'launchSuccess'`.
 
-- Implement the functionality to post a new comment:
-  - When the `id="submitBtn"` button is clicked, the following steps should be executed:
-    - Create a new comment object with the following structure:
-      - `name`: The value of the `id="name"` element.
-      - `comment`: The value of the `id="comment"` element.
-    - Send a fetch request to the `/comments/post` API endpoint with:
-      - The request method set to `'POST'`.
-      - The request headers set to `'Content-Type': 'application/json'`.
-      - The request body set to the new comment data as a stringified object (e.g. `{ name, comment }`).
-    - The fetch request will return the newly added comment if successful. Render the new comment in the comments container `id="commentsContainer"`.
+> 💡 HINT: You can use the `setInterval` function to update the timer every second.
+> [Read Docs](https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval)
 
-> 💡 HINT: In real-world scenarios, it's essential to sanitize input values before storing them in the database to ensure data integrity and security.
-> This is not required for this challenge, but it's a good practice to keep in mind.
+- Abort Mission:
 
-![Screenshot of the solution](https://api.certificates.dev/storage/js-l2-training-9-2-demo.gif)
+  - When the button with `id="abort"` is clicked:
+    - If clicked during an active launch countdown:
+      - Stop the countdown.
+      - Call the `logMessage` function with `'abortSuccess'`.
+    - If no countdown is active, call the `logMessage` function with `'abortFail'`.
 
-## Other Considerations
-
-- The `fetchData()` and `main()` functions must remain exported as they are essential for our tests.
+![Screenshot](https://api.certificates.dev/storage/js-l2-training-9-3.gif)

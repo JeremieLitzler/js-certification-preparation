@@ -1,44 +1,59 @@
-// complete the challenge here 👇
+import { renderTemperature, renderIngredient, renderMenu } from './render'
 
-// 1. Syntax Trap
-export function parseMagicSpell(spellString) {
-  console.log('parseMagicSpell', spellString);
-  try {
-    const spellObject = JSON.parse(spellString);
-    return spellObject;
-  } catch (error) {
-    return error;
+// 1. Temperature Controller
+export function setOvenTemperature (temperature) {
+  if (typeof temperature !== 'number') {
   }
+  if (temperature < 0 || temperature > 280) {
+  }
+  return 'Temperature set successfully'
 }
 
-console.log(parseMagicSpell('{"spell": "fireball", "power": 10,}'));
 
-// 2. Range Maze
-export function createMagicArray(length) {
-  try {
-    console.log('createMagicArray', length);
+// 2. Ingredient Inspector
 
-    return new Array(length);
-  } catch (error) {
-    return error;
+// Create EmptyIngredientError here and export it
+
+export function checkIngredientFreshness (ingredientName, shelfLife) {
+  if (typeof ingredientName !== 'string') {
   }
+  if (!Number.isInteger(shelfLife)) {
+  }
+  if (ingredientName.trim() === '') {
+  }
+  return `${ingredientName} is fresh and usable`
 }
 
-console.log(createMagicArray(-1));
 
-// 3. Reference Enigma
-export function castSpell(spellName, target) {
-  try {
-    const spells = {
-      fireball: (t) => `Cast fireball at ${t}`,
-      heal: (t) => `Heal ${t}`,
-      shield: (t) => `Apply shield to ${t}`,
-    };
-
-    return spells[spellName](target);
-  } catch (error) {
-    return error;
-  }
+// 3. Menu Planner
+const menu = {
+  'Spaghetti Carbonara': 12.99,
+  'Margherita Pizza': 10.50,
+  'Caesar Salad': 8.75
 }
 
-console.log(castSpell('invisibility', 'wizard'));
+export function addDishToMenu (dishName, price) {
+  if (typeof dishName !== 'string' || dishName.trim() === '') {
+  }
+  if (typeof price !== 'number' || price < 0) {
+  }
+  if (dishName in menu) {
+  }
+  menu[dishName] = price
+  return `${dishName} has been added to the menu`
+}
+
+
+// You don't care about the code below this comment.
+
+renderTemperature(() => setOvenTemperature(180))
+renderTemperature(() => setOvenTemperature(300))
+renderTemperature(() => setOvenTemperature('hot'))
+
+renderIngredient(() => checkIngredientFreshness('carrot', 7))
+renderIngredient(() => checkIngredientFreshness('', 5))
+renderIngredient(() => checkIngredientFreshness('potato', 3.5))
+
+renderMenu(() => addDishToMenu('Kung Pao Chicken', 38))
+renderMenu(() => addDishToMenu('Mapo Tofu', -5))
+renderMenu(() => addDishToMenu('Kung Pao Chicken', 40))

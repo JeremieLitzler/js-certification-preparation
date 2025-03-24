@@ -14,8 +14,6 @@ export default [
         'always',
         { objectsInObjects: false },
       ],
-      '@stylistic/js/multiline-ternary': ['error', 'never'],
-      '@stylistic/js/no-extra-parens': 'off',
     },
   },
 ];

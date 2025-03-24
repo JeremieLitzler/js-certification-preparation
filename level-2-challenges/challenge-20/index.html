@@ -5,42 +5,24 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Building Progressive Web Apps (PWAs)</title>
+  <title>Ground Control to Major Tom</title>
+  <style>
+    body {
+      background: #0B0C15;
+    }
+  </style>
 </head>
 
 <body>
+  <ul id="nav" class="top-nav"></ul>
   <div id="app">
-    <h1 class="title">
-      Building Progressive PWA Apps
-    </h1>
-    <div class="wrapper">
-      <div class="container" id="container">
-        <div class="detail-container">
-          <img src="/images/pwa.png" alt="PWA" />
-          <p>Progressive Web Apps (PWAs) are web applications that use modern web capabilities to deliver an app-like experience to users. They are reliable, fast, and engaging. In this guide, we will walk through the process of building a PWA from scratch. We will cover topics such as service workers, web app manifests, and caching strategies. By the end of this tutorial, you will have a solid understanding of how to create a PWA that can be installed on users\' devices and work offline...</p>
-        </div>
-        <h2 class="comments-title">Comments</h2>
-        <div class="comments-container" id="commentsContainer">
-          <!-- comment items -->
-        </div>
-        <!-- add comments form -->
-        <div>
-          <div id="addCommentForm">
-            <div>
-              <label for="name">Name:</label>
-              <input type="text" id="name" name="name" autocomplete="off" required />
-            </div>
-            <div>
-              <label for="comment">Comment:</label>
-              <textarea id="comment" name="comment" required></textarea>
-            </div>
-            <button id="submitBtn" type="submit">Add Comment</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <h1 class="exercise-title">Ground Control to Major Tom</h1>
   </div>
-  <script type="module" src="/index.js"></script>
+  <script type="module">
+    import './src/style.css';
+    import { main } from './src/main.js';
+    main()
+  </script>
 </body>
 
 </html>
