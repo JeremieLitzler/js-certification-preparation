@@ -1,7 +1,7 @@
 ---
 difficulty: 2
 tags: JavaScript, Error Handling
-chapter: "Chapter 8: Error Handling"
+chapter: 'Chapter 8: Error Handling'
 training: true
 ---
 
@@ -22,10 +22,7 @@ Complete all tasks in `/src/main.js` to become the most competent kitchen safety
    - If the temperature is not a number type, throw a TypeError with the message "Temperature must be a number".
    - If the temperature is below 0 degrees or above 280 degrees, throw a RangeError with the message "Temperature out of valid range".
    - In normal cases, return the message "Temperature set successfully".
-   - The `setOvenTemperature` function should work as expected with the following:
-
-   ![screenshot of requirement 1 solution](https://s3.amazonaws.com/images.certificates.dev/1-temperature-controller.png)
-
+   - The `setOvenTemperature` function should work as expected.
 
 2. Ingredient Inspector:
 
@@ -35,13 +32,11 @@ Complete all tasks in `/src/main.js` to become the most competent kitchen safety
    - If the shelf life is not an integer, throw a TypeError with the message "Shelf life must be an integer".
    - If the ingredient name is an empty string, return a custom `EmptyIngredientError` with the name "EmptyIngredientError" and message "Ingredient name cannot be empty".
 
-      - 💡: You can create a custom error by extending `Error`
-      - 💡: Export `EmptyIngredientError` so that we can test it
+     - 💡: You can create a custom error by extending `Error`
+     - 💡: Export `EmptyIngredientError` so that we can test it
 
    - In normal cases, return the message "[Ingredient name] is fresh and usable".
-   - The `checkIngredientFreshness` function should work as expected with the following:
-
-   ![screenshot of requirement 2 solution](https://s3.amazonaws.com/images.certificates.dev/2-ingredient-inspector.png)
+   - The `checkIngredientFreshness` function should work as expected.
 
 3. Menu Planner:
 
@@ -52,6 +47,3 @@ Complete all tasks in `/src/main.js` to become the most competent kitchen safety
    - If the dish name already exists in the menu, throw an Error with the message "Dish already exists in the menu".
    - In normal cases, return the message "[Dish name] has been added to the menu".
    - The `addDishToMenu` function should work as expected with the following:
-
-   ![screenshot of requirement 3 solution](https://s3.amazonaws.com/images.certificates.dev/3-menu-planner.png)
-
