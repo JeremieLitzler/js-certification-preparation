@@ -7,7 +7,7 @@ export function main() {
   console.log(timer, start, reset, pause);
 
   let time = 0;
-  let intervalId = 0;
+  let intervalId = null;
   const updateTimer = () => {
     const timerContent =
       time > 10 ? time.toString() : time.toString().padStart(2, 0);
@@ -29,6 +29,7 @@ export function main() {
   };
   const resetFn = (event) => {
     time = 0;
+    intervalId = null;
     updateTimer();
     clearInterval(intervalId);
   };
